@@ -1,33 +1,102 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Tasya</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%); /* Gradasi warna pastel */
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             text-align: center;
-            margin-top: 50px;
-            background-color: #f0f8ff;
+            max-width: 400px;
+            width: 90%;
+            transition: transform 0.3s ease;
         }
-        .container {
-            width: 80%;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        /* Efek saat mouse diarahkan ke kartu */
+        .card:hover {
+            transform: translateY(-5px);
         }
-        h1 { color: #2c3e50; }
-        p { color: #555; }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        p.subtitle {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .info {
+            font-size: 0.85rem;
+            color: #555;
+            background-color: #f7f9fc;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background: #eee;
+            margin: 20px 0;
+        }
+
+        .status-badge {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Selamat Datang di Blog Tasya! 👋</h1>
-        <p>Ini adalah halaman percobaan yaa.</p>
-        <p>Information Technology 20252 - President University</p>
+
+    <div class="card">
+        <h1>Hi, Tasya here! 👋</h1>
+        <p class="subtitle">Welcome to my personal space.</p>
+        
+        <div class="info">
+            Information Technology 2025<br>
+            <strong>President University</strong>
+        </div>
+
         <hr>
-        <p>Status Website: <strong>Ready </strong></p>
+
+        <p style="font-size: 0.9rem; margin-bottom: 8px;">Current Status:</p>
+        <div class="status-badge">
+            ● Website Ready
+        </div>
     </div>
+
 </body>
 </html>

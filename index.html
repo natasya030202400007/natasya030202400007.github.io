@@ -4,337 +4,312 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Natasya">
-    <title>Enterprise SecLog | Natasya</title>
+    <title>SecLog: Deep Dive | Natasya</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- RED DIGITAL FORTRESS THEME (FULL SCREEN VERSION) --- */
+        /* --- RED DIGITAL FORTRESS THEME (V3: HYBRID LAYOUT) --- */
         :root {
-            --bg-dark: #050505;
-            --card-dark: #121212;
-            --primary-red: #dc2626;  /* Merah utama */
-            --neon-red: #ff3333;     /* Merah nyala */
-            --text-main: #e0e0e0;
-            --text-muted: #888888;
-            --border-color: #333;
+            --bg-dark: #030000;
+            --card-dark: #0f0f0f;
+            --primary-red: #ef4444;   /* Merah terang */
+            --dark-red: #7f1d1d;      /* Merah darah */
+            --text-main: #e5e5e5;
+            --text-muted: #9ca3af;
+            --border-color: #262626;
         }
 
         body {
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
-            background-image: linear-gradient(to right, #0a0a0a 1px, transparent 1px),
-                              linear-gradient(to bottom, #0a0a0a 1px, transparent 1px);
-            background-size: 40px 40px; /* Grid background */
-            background-color: #080808;
+            line-height: 1.7;
+            background-image: 
+                linear-gradient(rgba(20, 0, 0, 0.8), rgba(0, 0, 0, 0.95)),
+                url("https://www.transparenttextures.com/patterns/cubes.png");
         }
 
         /* HEADER */
         header {
-            background: linear-gradient(90deg, #1a0000 0%, #000 100%);
-            padding: 2rem 5%;
-            border-bottom: 3px solid var(--primary-red);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            background: linear-gradient(180deg, #1a0505 0%, #030000 100%);
+            padding: 3rem 5%;
+            border-bottom: 2px solid var(--primary-red);
+            text-align: center;
         }
 
-        .brand h1 {
+        h1 {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--neon-red);
+            color: var(--primary-red);
+            font-size: 3rem;
             margin: 0;
-            font-size: 2.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(220, 38, 38, 0.6);
+            letter-spacing: 3px;
+            text-shadow: 0 0 20px rgba(239, 68, 68, 0.4);
         }
 
-        .brand p { margin: 0; color: var(--text-muted); font-size: 0.9rem; }
+        .subtitle { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
 
-        .author-badge {
-            background: rgba(220, 38, 38, 0.15);
-            color: var(--neon-red);
-            padding: 0.5rem 1.5rem;
-            border: 1px solid var(--primary-red);
-            font-family: 'Share Tech Mono', monospace;
-            border-radius: 4px;
-        }
-
-        /* LAYOUT UTAMA: GRID 2 KOLOM */
-        .main-layout {
+        /* --- LAYOUT GRID (BAGIAN ATAS) --- */
+        .top-section {
             display: grid;
-            grid-template-columns: 7fr 3fr; /* 70% Konten, 30% Sidebar */
+            grid-template-columns: 2.5fr 1fr; /* Kiri Lebar, Kanan Sempit */
             gap: 2rem;
-            max-width: 1400px; /* Lebar hampir full screen */
-            margin: 2rem auto;
+            max-width: 1200px;
+            margin: 3rem auto;
             padding: 0 2rem;
         }
 
-        /* KOLOM KIRI: ARTIKEL */
-        .content-area {
+        /* --- LAYOUT FULL WIDTH (BAGIAN BAWAH) --- */
+        .bottom-section {
+            max-width: 1000px; /* Lebih lebar agar enak dibaca */
+            margin: 0 auto 5rem;
+            padding: 0 2rem;
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 3rem;
         }
 
+        /* CARD STYLE */
         .article-card {
             background: var(--card-dark);
             border: 1px solid var(--border-color);
             padding: 2.5rem;
-            border-radius: 6px;
+            border-radius: 8px;
             position: relative;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-
-        /* Hiasan sudut kartu ala sci-fi */
-        .article-card::before {
-            content: ""; position: absolute; top: 0; left: 0;
-            width: 0; height: 0; 
-            border-top: 20px solid var(--primary-red); border-right: 20px solid transparent;
+        
+        .article-card:hover {
+            border-color: var(--primary-red);
+            transition: 0.3s;
         }
 
         h2 {
             font-family: 'Share Tech Mono', monospace;
-            color: var(--neon-red);
-            font-size: 1.8rem;
+            color: #fff;
+            font-size: 2rem;
+            border-left: 5px solid var(--primary-red);
+            padding-left: 15px;
             margin-top: 0;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
-            margin-bottom: 1.5rem;
         }
 
-        h3 { color: #fff; margin-top: 2rem; font-size: 1.3rem; }
-        
-        /* Highlight text (Mix Indo-Inggris Style) */
-        .mix-lang {
-            font-style: italic;
-            color: #ffcccc;
-        }
-        
-        strong { color: #fff; }
+        h3 { color: var(--primary-red); margin-top: 2rem; font-size: 1.4rem; }
 
-        /* KOLOM KANAN: SIDEBAR WIDGETS */
-        .sidebar {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .widget-card {
-            background: #0f0f0f;
+        /* IMAGE STYLE */
+        .blog-img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin: 2rem 0;
             border: 1px solid #333;
+            filter: grayscale(40%); /* Biar agak artistik */
+            transition: 0.3s;
+        }
+        
+        .blog-img:hover { filter: grayscale(0%); border-color: var(--primary-red); }
+
+        .img-caption {
+            text-align: center; font-size: 0.85rem; color: #666; margin-top: -1.5rem; margin-bottom: 2rem; font-style: italic;
+        }
+
+        /* SIDEBAR WIDGETS */
+        .sidebar { display: flex; flex-direction: column; gap: 1.5rem; }
+        
+        .widget {
+            background: #0a0a0a;
+            border: 1px solid #222;
             padding: 1.5rem;
             border-radius: 6px;
         }
-
+        
         .widget-title {
             font-family: 'Share Tech Mono', monospace;
             color: var(--text-muted);
-            font-size: 1rem;
-            text-transform: uppercase;
-            border-bottom: 2px solid var(--primary-red);
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .stat-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-            border-bottom: 1px dashed #333;
+            border-bottom: 1px solid var(--dark-red);
             padding-bottom: 5px;
+            margin-bottom: 15px;
+            display: block;
         }
 
-        .tag-cloud {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .tag {
-            background: #1a1a1a;
-            color: var(--neon-red);
-            padding: 5px 10px;
-            font-size: 0.8rem;
-            border: 1px solid var(--primary-red);
-            border-radius: 3px;
-        }
-
-        /* IMAGE STYLING */
-        .blog-img {
-            width: 100%;
-            height: auto;
-            border: 1px solid var(--border-color);
-            margin: 1.5rem 0;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        .blog-img:hover { opacity: 1; }
-
-        /* BLOCKQUOTE */
+        /* UTILS */
+        .mix-lang { color: #fca5a5; font-style: italic; }
         blockquote {
-            background: rgba(255, 51, 51, 0.05);
-            border-left: 3px solid var(--neon-red);
-            margin: 1.5rem 0;
-            padding: 1rem 1.5rem;
-            color: #d1d5db;
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--primary-red);
+            margin: 2rem 0;
+            padding: 1.5rem;
+            font-size: 1.1rem;
+            color: #fff;
         }
-
+        ul { padding-left: 1.2rem; }
+        li { margin-bottom: 0.8rem; }
+        
         /* RESPONSIVE */
         @media (max-width: 900px) {
-            .main-layout { grid-template-columns: 1fr; } /* Stack di HP */
-            .sidebar { flex-direction: row; flex-wrap: wrap; }
-            .widget-card { flex: 1 1 300px; }
+            .top-section { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="brand">
-            <h1>Natasya.SecLog</h1>
-            <p>Infrastructure Security & Risk Management Journal</p>
-        </div>
-        <div class="author-badge">
-            STATUS: ONLINE
-        </div>
+        <h1>Security_Log.v4</h1>
+        <p class="subtitle">Infrastructure Risk Management Analysis by <strong>Natasya</strong></p>
     </header>
 
-    <div class="main-layout">
+    <div class="top-section">
         
-        <main class="content-area">
-
+        <main>
             <article class="article-card">
-                <h2>01_The_Meaning_of_Security</h2>
+                <h2>01. The Context of Security</h2>
                 <p>
-                    So, apa sih sebenernya arti dari "Security"? Kalau kita liat dari materi perkuliahan <span class="mix-lang">Security Risk Management</span>, definisinya itu simpel banget sebenernya: <strong>Protection of assets against threats.</strong>
+                    Kita sering denger kata "Security", tapi konteksnya apa? Di slide dosen dijelasin kalau keamanan itu benang merah dari banyak hal: <span class="mix-lang">Personal security, Corporate security, Network security,</span> sampai <span class="mix-lang">Homeland security</span>.
                 </p>
                 <p>
-                    Tapi <em>in real life</em>, ini kompleks banget. Kita gak bisa cuma ngomong "ini aman". Kita harus tanya:
+                    Tapi definisi intinya cuma satu: <strong>"Protection of assets against threats."</strong>
+                </p>
+                
+                <img src="https://images.unsplash.com/photo-1563206767-5b1d972d9323?auto=format&fit=crop&w=1000&q=80" alt="Assets Protection" class="blog-img">
+                <p class="img-caption">Fig 1. Melindungi aset digital yang tidak terlihat tapi bernilai tinggi.</p>
+
+                <p>
+                    Nah, di level institusi, ancamannya ngeri-ngeri sedap. Contoh skenarionya:
                 </p>
                 <ul>
-                    <li><strong>What assets?</strong> (Data nasabah? IP Address? Atau password admin?)</li>
-                    <li><strong>From what threats?</strong> (Hacker iseng? Atau kompetitor bisnis?)</li>
+                    <li>Sistem perusahaan ditembus, data ribuan customer dicuri.</li>
+                    <li>Mahasiswa nge-hack sistem registrasi kampus buat ngubah nilai (ini klasik tapi bahaya).</li>
+                    <li>Website toko online kena DDoS sampai mati total, gak bisa jualan.</li>
                 </ul>
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80" alt="Cyber Security Concept" class="blog-img">
                 <p>
-                    Basically, keamanan di level personal (kayak akun sosmed kita) sama level institusional (kayak data kampus atau bank) itu beda skala, tapi prinsipnya sama: <span class="mix-lang">We want to ensure bad things never happen.</span>
-                </p>
-            </article>
-
-            <article class="article-card">
-                <h2>02_Programming_Satans_Computer</h2>
-                <p>
-                    Kenapa sih <em>Cyber Security</em> itu susah banget? Ada satu istilah menarik dari materi PPT, yaitu <strong>"Programming Satan's Computer"</strong>.
-                </p>
-                <p>
-                    Bedanya sama *programming* biasa:
-                </p>
-                <blockquote>
-                    "Kalau coding biasa, kita cuma pengen programnya jalan (ensure good things happen). Tapi kalau security, kita harus mastiin <strong>bad things NEVER happen</strong>."
-                </blockquote>
-                <p>
-                    Ini yang bikin pusing. Sebagai <strong>Defender</strong> (kita), kita harus nemuin <strong>SEMUA</strong> celah keamanan buat ditambal. Tapi si <strong>Attacker</strong> (hacker)? Mereka cuma butuh nemu <strong>SATU</strong> celah aja buat masuk. <em>It's totally unfair, right?</em>
-                </p>
-            </article>
-
-            <article class="article-card">
-                <h2>03_The_Basement_Window_Theory</h2>
-                <p>
-                    Ada teori yang *mind-blowing* banget di slide kuliah, namanya <strong>Principle of Easiest Penetration</strong>.
-                </p>
-                <img src="https://images.unsplash.com/photo-1614064641938-3bcee529cf93?auto=format&fit=crop&w=1000&q=80" alt="Hacker Concept" class="blog-img">
-                <p>
-                    Bayangin rumah lo punya pintu depan baja, CCTV, sama satpam. Tapi... <strong>jendela basement-nya gak dikunci.</strong> Maling gak bakal lewat depan, bro. Mereka bakal masuk lewat jendela itu.
-                </p>
-                <p>
-                    Sama kayak di IT Infrastructure. Percuma pake Firewall mahal kalau password adminnya masih <code>admin123</code>. <span class="mix-lang">Attackers will always use any available means to subvert the security.</span> Jadi, jangan cuma fokus ke alat canggih, tapi cek juga hal-hal sepele yang sering kelupaan.
+                    Itulah kenapa mendefinisikan "aman" di sistem digital itu susah banget.
                 </p>
             </article>
             
             <article class="article-card">
-                <h2>04_No_Perfect_Security</h2>
+                <h2>02. Why is Cyber Security so Hard?</h2>
                 <p>
-                    Terakhir, ada *quote* legendaris dari Prof. Fred Chang (NSA) di materi kita. Katanya, satu-satunya cara bikin komputer bener-bener aman adalah:
+                    Ini pertanyaan paling filosofis di materi kita. Kenapa keamanan jauh lebih sulit daripada masalah teknologi biasa? Jawabannya ada di perbedaan mindset.
                 </p>
                 <ul>
-                    <li>Matiin komputernya.</li>
-                    <li>Cabut kabel internetnya.</li>
-                    <li>Cor pake semen.</li>
-                    <li>Kubur 100 kaki di dalem tanah.</li>
+                    <li><strong>Teknologi Biasa:</strong> Memastikan <span class="mix-lang">something GOOD happens</span> (aplikasi jalan lancar).</li>
+                    <li><strong>Security:</strong> Memastikan <span class="mix-lang">BAD things NEVER happen</span>.</li>
                 </ul>
                 <p>
-                    <em>Funny, but true.</em> Keamanan sempurna itu mitos. <span class="mix-lang">Security is always a tradeoff</span>. Kalau terlalu aman, sistemnya jadi ribet dan gak bisa dipake (usability-nya ancur). Jadi tugas kita adalah nyari *balance* di antara keduanya.
+                    Masalahnya, untuk mencegah hal buruk, kita harus tau dulu hal buruknya apa. Bruce Schneier pernah bilang:
                 </p>
+                <blockquote>
+                    "A good attack is one that the engineers never thought of." <br>
+                    <small>— Bruce Schneier</small>
+                </blockquote>
             </article>
-
         </main>
 
         <aside class="sidebar">
-            
-            <div class="widget-card">
-                <div class="widget-title">User_Profile</div>
-                <div style="text-align: center; margin-bottom: 1rem;">
-                    <div style="width: 80px; height: 80px; background: #333; border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; color: var(--neon-red); font-size: 2rem;">N</div>
-                </div>
-                <div class="stat-item">
-                    <span>Name:</span> <strong>Natasya</strong>
-                </div>
-                <div class="stat-item">
-                    <span>Role:</span> <span>Sec. Analyst</span>
-                </div>
-                <div class="stat-item">
-                    <span>Access:</span> <span style="color: #4ade80">Level 5 (Admin)</span>
+            <div class="widget">
+                <span class="widget-title">USER_ID</span>
+                <div style="text-align: center;">
+                    <h3 style="margin:0; color:#fff;">NATASYA</h3>
+                    <p style="font-size:0.8rem; color:#666;">Sec. Admin Level 5</p>
+                    <div style="height:2px; background:var(--primary-red); width:50%; margin:10px auto;"></div>
+                    <p style="font-size:0.8rem;">Status: <span style="color:#4ade80">MONITORING</span></p>
                 </div>
             </div>
 
-            <div class="widget-card">
-                <div class="widget-title">Key_Concepts</div>
-                <p style="font-size: 0.85rem; color: #aaa;">Istilah penting dari PPT:</p>
-                <div class="tag-cloud">
-                    <span class="tag">Asset Protection</span>
-                    <span class="tag">CIA Triad</span>
-                    <span class="tag">Risk Mgmt</span>
-                    <span class="tag">Zero Trust</span>
-                    <span class="tag">Defense in Depth</span>
-                </div>
-            </div>
-
-            <div class="widget-card">
-                <div class="widget-title">Security_Tips</div>
-                <ul style="font-size: 0.9rem; padding-left: 1rem; color: #ccc;">
-                    <li style="margin-bottom: 8px;">Always use MFA (Multi-Factor Auth).</li>
-                    <li style="margin-bottom: 8px;">Jangan percaya public WiFi.</li>
-                    <li style="margin-bottom: 8px;">Update OS lo sekarang juga!</li>
+            <div class="widget">
+                <span class="widget-title">ENCRYPTED_KEYS</span>
+                <ul style="font-size:0.9rem; color:#aaa; list-style:square;">
+                    <li>Zero Trust</li>
+                    <li>CIA Triad</li>
+                    <li>Risk Management</li>
+                    <li>Asymmetric Defense</li>
                 </ul>
             </div>
 
-             <div class="widget-card">
-                <div class="widget-title">Sys_Status</div>
-                <div class="stat-item">
-                    <span>Firewall:</span> <span style="color:#4ade80">ACTIVE</span>
+            <div class="widget">
+                <span class="widget-title">SYSTEM_MSG</span>
+                <p style="font-size:0.85rem; font-style:italic;">
+                    "He who defends everything, defends nothing." 
+                    <br><span style="color:var(--dark-red)">— Old Military Adage</span>
+                </p>
+            </div>
+        </aside>
+    </div>
+    <div class="bottom-section">
+        
+        <article class="article-card" style="border-left-color: #fff;">
+            <h2>03. Programming Satan's Computer</h2>
+            <p>
+                Materi ini makin dalem. Ross Anderson menyebut lingkungan keamanan siber sebagai <em>"Programming Satan's Computer"</em>.
+            </p>
+            <p>
+                Kenapa disebut komputer setan? Karena lingkungan tempat program kita berjalan itu <strong>jahat</strong>. Kita melawan musuh yang aktif dan cerdas. Ini menciptakan ketidakadilan posisi:
+            </p>
+            
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80" alt="Hacker Code" class="blog-img">
+            <p class="img-caption">Fig 2. The Asymmetry of Defense: Defender vs Attacker.</p>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div style="flex: 1; background: #1a1a1a; padding: 1.5rem; border-radius: 8px;">
+                    <strong style="color: #4ade80;">DEFENDER (KITA)</strong>
+                    <p>Harus menemukan dan menambal <strong>SEMUA</strong> celah keamanan (vulnerabilities). Kalau ada 1000 lubang, kita harus tutup 1000-1000nya.</p>
                 </div>
-                <div class="stat-item">
-                    <span>Encryption:</span> <span style="color:#4ade80">AES-256</span>
-                </div>
-                <div class="stat-item">
-                    <span>Threat Level:</span> <span style="color:yellow">MODERATE</span>
+                <div style="flex: 1; background: #1a1a1a; padding: 1.5rem; border-radius: 8px;">
+                    <strong style="color: var(--primary-red);">ATTACKER (MEREKA)</strong>
+                    <p>Hanya perlu menemukan <strong>SATU</strong> celah saja untuk menang. <span class="mix-lang">They focus on the weakest link.</span></p>
                 </div>
             </div>
+        </article>
 
-        </aside>
+        <article class="article-card">
+            <h2>04. The Basement Window Theory</h2>
+            <p>
+                Di slide ke-8, ada konsep namanya <strong>Principle of Easiest Penetration</strong>. Ini konsep favorit aku karena logis banget.
+            </p>
+            <blockquote>
+                "If one overlooks the basement windows while assessing the risks to one's house, it does not matter how many alarms are put on the doors." <br>
+                <small>— Melissa Danforth</small>
+            </blockquote>
+            <p>
+                Maksudnya apa? Penyerang akan selalu menggunakan cara apa saja yang tersedia. Sistem informasi itu kompleks (ada Hardware, Software, Storage, People). Biasanya, "Jendela Basement"-nya adalah <strong>People</strong> (Manusia).
+            </p>
+            <p>
+                Kita bisa pasang enkripsi canggih, tapi kalau password admin ditempel di monitor pake sticky notes, ya kelar udah.
+            </p>
+        </article>
+
+        <article class="article-card">
+            <h2>05. Perfect Security is a Myth</h2>
+            <p>
+                Kesimpulan akhirnya agak pesimis tapi realistis. <span class="mix-lang">Perfect security is impossible in any useful system.</span> Ada <em>quote</em> sarkas dari Prof. Fred Chang (mantan direktur riset NSA) tahun 2009:
+            </p>
+            
+            <img src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?auto=format&fit=crop&w=1000&q=80" alt="Secure Vault" class="blog-img">
+            <p class="img-caption">Fig 3. Keamanan mutlak hanya bisa dicapai dengan isolasi total.</p>
+
+            <div style="background: #222; padding: 2rem; border-left: 5px solid yellow; color: #fff;">
+                <p><strong>Cara Mengamankan Komputer (Versi NSA):</strong></p>
+                <ol>
+                    <li>Matikan komputernya.</li>
+                    <li>Cabut dari internet.</li>
+                    <li>Cor di dalam semen.</li>
+                    <li>Kubur 100 kaki di bawah tanah.</li>
+                </ol>
+            </div>
+            
+            <p style="margin-top: 2rem;">
+                Intinya? <span class="mix-lang">Security is a tradeoff</span>. Keamanan seringkali menghalangi kenyamanan ("Security gets in the way"). Kalau terlalu aman, sistemnya jadi lemot atau susah dipake. Jadi tugas kita sebagai anak Enterprise Security adalah menyeimbangkan antara keamanan dan fungsionalitas.
+            </p>
+        </article>
 
     </div>
 
-    <footer style="text-align: center; padding: 2rem; border-top: 1px solid #333; color: #666; font-size: 0.8rem;">
-        <p>SESSION ID: 2026-NTSY-SEC | ENCRYPTED CONNECTION</p>
-        <p>Blog ini dibuat untuk memenuhi tugas Enterprise & Infrastructure.</p>
+    <footer style="text-align: center; padding: 4rem 1rem; background: #000; border-top: 1px solid #333; color: #555;">
+        <p>INFRASTRUCTURE SECURITY LOG &copy; 2026</p>
+        <p>Curated by Natasya based on Security Risk Management Course</p>
     </footer>
 
 </body>

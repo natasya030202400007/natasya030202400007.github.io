@@ -4,101 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Natasya">
-    <title>Security Insights by Natasya</title>
+    <title>Enterprise Security Log | Natasya</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
     <style>
-        /* CSS STYLE - TAMPILAN PROFESIONAL */
+        /* --- STYLE KONFIGURASI (CHIC & STYLISH THEME) --- */
         :root {
-            --primary: #0f172a; /* Dark Blue */
-            --secondary: #38bdf8; /* Light Blue Neon */
-            --accent: #f472b6; /* Pink accent */
-            --text: #cbd5e1;
-            --heading: #f1f5f9;
-            --bg: #020617;
+            --bg-color: #fdfbf7;      /* Cream lembut */
+            --card-bg: #ffffff;       /* Putih bersih */
+            --primary: #be185d;       /* Rose Red elegan */
+            --secondary: #fbcfe8;     /* Soft Pink pastel */
+            --accent: #831843;        /* Dark Berry untuk kontras */
+            --text-main: #374151;     /* Abu-abu gelap (bukan hitam pekat agar mata nyaman) */
+            --text-light: #6b7280;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
+        /* HEADER YANG CANTIK */
         header {
-            background-color: var(--primary);
-            padding: 3rem 1rem;
+            background: linear-gradient(135deg, #fce7f3 0%, #fdfbf7 100%);
+            padding: 4rem 1rem;
             text-align: center;
-            border-bottom: 3px solid var(--secondary);
-            background-image: linear-gradient(to bottom, #0f172a, #1e293b);
+            border-bottom: 1px solid rgba(190, 24, 93, 0.1);
         }
 
         h1 {
-            color: var(--heading);
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
             margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: -1px;
+            font-size: 3.5rem;
+            letter-spacing: -0.5px;
         }
 
-        .author-tag {
-            background-color: var(--secondary);
-            color: #000;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 10px;
+            font-weight: 300;
+        }
+
+        .author-badge {
             display: inline-block;
-            margin-top: 15px;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background-color: #fff;
+            color: var(--primary);
+            border: 1px solid var(--secondary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(190, 24, 93, 0.05);
         }
 
-        h2 { color: var(--secondary); border-left: 4px solid var(--accent); padding-left: 15px; margin-top: 0;}
-        h3 { color: var(--heading); margin-top: 2rem;}
-
+        /* CONTAINER ARTIKEL */
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 2rem 1rem;
+            max-width: 900px; /* Lebih lebar agar muat banyak teks */
+            margin: -30px auto 0; /* Efek overlap sedikit ke header */
+            padding: 0 1.5rem;
         }
 
+        /* KARTU ARTIKEL */
         .article-card {
-            background-color: #1e293b;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            border: 1px solid #334155;
+            background-color: var(--card-bg);
+            padding: 3.5rem;
+            margin-bottom: 3rem;
+            border-radius: 20px; /* Sudut lebih bulat */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: transform 0.3s ease;
         }
 
+        .article-card:hover {
+            transform: translateY(-5px); /* Efek melayang sedikit saat di-hover */
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary);
+            font-size: 2rem;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        /* Garis dekoratif di bawah judul artikel */
+        h2::after {
+            content: "";
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary);
+            margin-top: 10px;
+        }
+
+        h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.4rem;
+            margin-top: 2.5rem;
+        }
+
+        p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+        /* LIST YANG LEBIH RAPI */
+        ul {
+            list-style: none; /* Hilangkan bullet standar */
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: "🌸"; /* Bullet point bunga */
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.8rem;
+        }
+
+        /* BLOCKQUOTE ESTETIK */
         blockquote {
-            background-color: #0f172a;
-            border-left: 4px solid var(--accent);
-            margin: 1.5rem 0;
-            padding: 1rem 1.5rem;
+            background-color: #fff1f2; /* Pink sangat muda */
+            border-left: none;
+            border-radius: 12px;
+            margin: 2rem 0;
+            padding: 2rem;
+            font-family: 'Playfair Display', serif;
             font-style: italic;
-            color: var(--heading);
-            border-radius: 0 8px 8px 0;
+            font-size: 1.2rem;
+            color: var(--accent);
+            text-align: center;
+            position: relative;
         }
-
-        .highlight { color: var(--secondary); font-weight: bold; }
         
-        ul { margin-bottom: 1.5rem; }
-        li { margin-bottom: 0.5rem; }
+        blockquote::before { content: "“"; font-size: 3rem; display: block; line-height: 0.5; margin-bottom: 10px; opacity: 0.3; }
+
+        /* HIGHLIGHT TEXT */
+        .highlight {
+            background: linear-gradient(120deg, var(--secondary) 0%, rgba(255,255,255,0) 100%);
+            padding: 0 5px;
+            font-weight: bold;
+            color: var(--accent);
+        }
 
         footer {
             text-align: center;
-            padding: 3rem;
+            padding: 4rem 1rem;
             font-size: 0.9rem;
-            color: #64748b;
-            border-top: 1px solid #334155;
+            color: var(--text-light);
+            background-color: #fff;
+            border-top: 1px solid #f3f4f6;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .article-card { padding: 2rem; }
+            .container { padding: 1rem; margin-top: 0; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Security Risk Management</h1>
-        <div class="author-tag">Curated by Natasya</div>
-        <p style="margin-top: 15px; color: #94a3b8;">Sebuah tinjauan mendalam mengenai filosofi pertahanan siber</p>
+        <h1>Security & Infrastructure</h1>
+        <p class="subtitle">Eksplorasi Mendalam tentang Manajemen Risiko & Pertahanan Siber</p>
+        <div class="author-badge">Curated by Natasya</div>
     </header>
 
     <div class="container">
@@ -106,64 +192,85 @@
         <article class="article-card">
             <h2>1. Apa Sebenarnya Makna "Aman"?</h2>
             <p>
-                [cite_start]Kata "Security" sering kita dengar dalam berbagai konteks—mulai dari keamanan personal, keamanan perusahaan, hingga keamanan nasional[cite: 1]. [cite_start]Namun, jika ditarik benang merahnya, definisi paling mendasar dari keamanan adalah <strong>perlindungan aset terhadap ancaman</strong>[cite: 1].
+                Ketika kita berbicara tentang <em>Enterprise Security</em>, kita sering terjebak dalam jargon teknis. Namun, mari kita kembali ke definisi paling fundamental. Istilah "Security" (Keamanan) sebenarnya bermuara pada satu konsep sederhana: <strong>Perlindungan aset terhadap ancaman.</strong>
             </p>
             <p>
-                Pertanyaan besarnya bukan sekadar "apakah ini aman?", melainkan:
+                Dalam konteks infrastruktur IT, pertanyaan kuncinya adalah:
             </p>
             <ul>
-                <li>Aset apa yang kita lindungi? (Data pelanggan? Hak cipta? Uang?)</li>
-                <li>Dari ancaman jenis apa? (Hacker iseng? Sindikat kriminal? Bencana alam?) [cite_start][cite: 1]</li>
+                <li><strong>Aset apa yang paling berharga?</strong> (Apakah data nasabah? Reputasi perusahaan? Atau kekayaan intelektual?)</li>
+                <li><strong>Ancaman apa yang mengintai?</strong> (Serangan <em>ransomware</em>? Pencurian data internal? Atau sekadar kesalahan konfigurasi?)</li>
             </ul>
             <p>
-                [cite_start]Dalam level personal, keamanan berarti memastikan privasi data kita terjaga, adanya autentikasi agar tidak terkena <em>phishing</em>, dan integritas data agar tidak ada yang mengubah informasi tanpa izin[cite: 1].
+                Kita harus memahami bahwa keamanan itu kontekstual. Keamanan bagi sebuah bank (Integritas saldo) berbeda prioritasnya dengan keamanan bagi Netflix (Ketersediaan layanan streaming).
             </p>
         </article>
 
         <article class="article-card">
-            <h2>2. Mengapa Cyber Security Itu Sangat Sulit?</h2>
+            <h2>2. Tiga Pilar Keamanan: CIA Triad</h2>
             <p>
-                Banyak yang bertanya, kenapa masalah keamanan jauh lebih sulit dipecahkan dibandingkan masalah teknologi lainnya? Jawabannya terletak pada tujuan akhirnya.
-            </p>
-            <p>
-                Dalam pengembangan <em>software</em> biasa, tujuannya adalah memastikan <strong>"hal baik terjadi"</strong> (aplikasi berjalan lancar). [cite_start]Tapi dalam keamanan, tujuannya adalah memastikan <strong>"hal buruk TIDAK PERNAH terjadi"</strong>[cite: 1].
+                Untuk membangun infrastruktur yang kokoh, kita tidak bisa bekerja tanpa arah. Ada standar emas dalam industri keamanan yang disebut <span class="highlight">CIA Triad</span>. Ini adalah materi tambahan penting untuk memahami bagaimana sebuah sistem dinilai aman.
             </p>
             
-            <h3>Paradoks "Satan's Computer"</h3>
+            <h3>🔒 Confidentiality (Kerahasiaan)</h3>
             <p>
-                Ross Anderson mengistilahkan lingkungan ini sebagai <em>"Programming Satan's Computer"</em>. [cite_start]Berbeda dengan *bug* biasa yang tidak disengaja, dalam keamanan kita melawan musuh yang cerdas dan jahat[cite: 1].
+                Memastikan data hanya bisa diakses oleh mereka yang berhak. Dalam infrastruktur, ini diimplementasikan melalui:
+                <br><em>Contoh: Enkripsi data, Two-Factor Authentication (2FA), dan manajemen hak akses.</em>
             </p>
-            <blockquote>
-                [cite_start]"Defender (kita) harus menemukan dan menambal <strong>SEMUA</strong> celah keamanan. Penyerang (hacker) hanya perlu menemukan <strong>SATU</strong> celah saja." [cite: 1]
-            </blockquote>
+
+            <h3>🛡️ Integrity (Integritas)</h3>
+            <p>
+                Menjamin bahwa data tidak diubah atau dirusak oleh pihak yang tidak berwenang. Bayangkan jika nilai mata kuliah atau saldo bank berubah sendiri.
+                <br><em>Contoh: Penggunaan Hashing (SHA-256) dan Digital Signature.</em>
+            </p>
+
+            <h3>⚡ Availability (Ketersediaan)</h3>
+            <p>
+                Sistem harus selalu tersedia saat dibutuhkan. Keamanan yang terlalu ketat hingga sistem sulit diakses adalah kegagalan desain.
+                <br><em>Contoh: Backup rutin, Redundansi server, dan proteksi anti-DDoS.</em>
+            </p>
         </article>
 
         <article class="article-card">
-            <h2>3. Prinsip "Jendela Basement" & Realitas</h2>
+            <h2>3. The Asymmetry of Defense</h2>
             <p>
-                Seringkali kita fokus pada teknologi canggih seperti firewall mahal atau enkripsi rumit, tapi melupakan celah sederhana. Ini disebut <em>Principle of Easiest Penetration</em>.
+                Mengapa keamanan siber sering disebut sebagai pekerjaan yang paling sulit dan membuat stres? Jawabannya terletak pada ketidakseimbangan (asimetri) antara penyerang dan bertahan.
             </p>
             <p>
-                [cite_start]Melissa Danforth pernah berkata, percuma kita memasang alarm canggih di pintu depan dan lantai atas, jika kita lupa mengunci <strong>jendela basement</strong>[cite: 1]. [cite_start]Penyerang akan selalu mencari jalan masuk termudah, entah itu lewat <em>software</em>, <em>hardware</em>, atau bahkan kelalaian manusia (<em>social engineering</em>)[cite: 1].
-            </p>
-            
-            <h3>Apakah Keamanan Sempurna Itu Ada?</h3>
-            <p>
-                Jawabannya: <strong>Tidak Mungkin</strong>. [cite_start]Keamanan sempurna dalam sistem yang berguna itu mustahil[cite: 1]. Ada lelucon lama dari era 1980-an:
+                Ross Anderson, seorang profesor teknik keamanan, menggambarkan lingkungan ini sebagai <em>"Programming Satan's Computer"</em>. Berbeda dengan ilmu komputer biasa di mana kita berjuang melawan logika, di sini kita berjuang melawan musuh yang cerdas dan jahat.
             </p>
             <blockquote>
-                "Satu-satunya cara membuat komputer benar-benar aman adalah dengan mematikannya, mencabut kabelnya, mengecornya dalam semen, dan menguburnya 100 kaki di bawah tanah." [cite_start]— Prof. Fred Chang (NSA) [cite: 1]
+                "Defender (kita) harus menutup <strong>100%</strong> celah keamanan untuk aman. Penyerang (hacker) hanya perlu menemukan <strong>1</strong> celah kecil untuk menang."
             </blockquote>
             <p>
-                Oleh karena itu, tugas kita sebagai praktisi IT (seperti yang saya, <strong>Natasya</strong>, pelajari) adalah menyeimbangkan antara keamanan (Security) dan kegunaan (Usability). [cite_start]Karena jika keamanan terlalu ketat, sistem justru menjadi tidak bisa digunakan[cite: 1].
+                Inilah sebabnya mengapa pendekatan kita tidak boleh hanya "sekadar memasang firewall", tetapi harus berlapis-lapis (Defense in Depth).
+            </p>
+        </article>
+
+        <article class="article-card">
+            <h2>4. Mitos Keamanan Sempurna</h2>
+            <p>
+                Dalam materi perkuliahan <em>Security Risk Management</em>, ada sebuah prinsip menarik tentang "Jendela Basement".
+            </p>
+            <p>
+                Bayangkan sebuah rumah. Kita memasang pintu baja di depan, alarm canggih di atap, dan kamera CCTV di pagar. Tapi, kita lupa mengunci jendela kecil di ruang bawah tanah. Penyerang tidak akan repot mendobrak pintu baja; mereka akan masuk lewat jendela yang lupa dikunci itu. Ini disebut <em>Principle of Easiest Penetration</em>.
+            </p>
+            <p>
+                Apakah keamanan sempurna itu mungkin? Secara teknis, <strong>tidak</strong>. Prof. Fred Chang dari NSA pernah menyindir:
+            </p>
+            <p>
+                <em>"Satu-satunya komputer yang aman adalah yang dimatikan, dicabut kabelnya, disemen, dan dikubur 100 kaki di dalam tanah."</em>
+            </p>
+            <p>
+                Oleh karena itu, tujuan kita sebagai ahli infrastruktur bukan mencari kesempurnaan, melainkan <span class="highlight">Manajemen Risiko</span>. Kita harus menyeimbangkan keamanan dengan kenyamanan (Usability).
             </p>
         </article>
 
     </div>
 
     <footer>
-        <p>Copyright &copy; 2026. Ditulis & Dikembangkan oleh <strong>Natasya</strong>.</p>
-        <p style="font-size: 0.8rem; opacity: 0.6;">Referensi: Materi Security Risk Management</p>
+        <p>Design & Content by <strong>Natasya</strong> &copy; 2026</p>
+        <p>Dibuat sebagai tugas pemahaman lanjut mata kuliah Enterprise & Infrastructure.</p>
     </footer>
 
 </body>

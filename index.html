@@ -1,300 +1,179 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Natasya">
-    <title>Enterprise Security: Final Log | Natasya</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <style>
-        /* --- THEME: RED DIGITAL FORTRESS (FINAL) --- */
-        :root {
-            --bg-dark: #050505;
-            --card-bg: #0f0f0f;
-            --primary: #ef4444;      /* Merah terang */
-            --dark-red: #7f1d1d;     /* Merah gelap */
-            --text-main: #e5e5e5;
-            --text-muted: #9ca3af;
-            --border: #333;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Natasya">
+<title>Enterprise Security: Final Log | Natasya</title>
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
-            overflow-x: hidden; /* Mencegah scroll samping yang tidak perlu */
-        }
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-        /* HEADER */
-        header {
-            background: linear-gradient(180deg, #1f0505 0%, #000 100%);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 3px solid var(--primary);
-        }
+<style>
+/* ================= THEME ================= */
+:root {
+  --bg-dark:#050505;
+  --card-bg:#0f0f0f;
+  --primary:#ef4444;
+  --text-main:#e5e5e5;
+  --text-muted:#9ca3af;
+  --border:#333;
+}
 
-        h1 {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--primary);
-            font-size: 3.5rem;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            text-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
-        }
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:var(--bg-dark);
+  color:var(--text-main);
+  line-height:1.8;
+}
 
-        .subtitle { color: var(--text-muted); margin-top: 15px; font-size: 1.2rem; letter-spacing: 1px; }
+/* ================= HEADER ================= */
+header{
+  text-align:center;
+  padding:4rem 2rem;
+  background:linear-gradient(180deg,#1f0505,#000);
+  border-bottom:3px solid var(--primary);
+}
+h1{
+  font-family:'JetBrains Mono',monospace;
+  color:var(--primary);
+  letter-spacing:4px;
+  font-size:3.2rem;
+}
 
-        /* --- LAYOUT 1: SPLIT (ATAS - Artikel 1 & 2 + Sidebar) --- */
-        .layout-split {
-            display: grid;
-            grid-template-columns: 70% 30%; /* Kiri 70%, Kanan 30% */
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 4rem auto;
-            padding: 0 2rem;
-        }
+/* ================= GLOBAL ================= */
+h2,h3{
+  font-family:'JetBrains Mono',monospace;
+}
+.article-card{
+  background:var(--card-bg);
+  border:1px solid var(--border);
+  padding:2.5rem;
+  border-radius:8px;
+}
+.blog-img{
+  width:100%;
+  height:250px;
+  object-fit:cover;
+  border-radius:6px;
+  margin:1.5rem 0;
+}
 
-        /* --- LAYOUT 2: FULL WIDTH (BAWAH - Artikel 3, 4, 5) --- */
-        /* Ini yang membuat dia FULL LAYAR Kiri-Kanan */
-        .layout-full {
-            width: 100vw; /* 100% Viewport Width */
-            margin-left: calc(-50vw + 50%); /* Trik CSS biar full screen */
-            padding: 5rem 0;
-            background: linear-gradient(to bottom, #0a0a0a, #000);
-            border-top: 2px solid var(--primary);
-            position: relative;
-        }
+/* ================= SECTION 1 ================= */
+.section-split{
+  max-width:1400px;
+  margin:4rem auto;
+  padding:0 2rem;
+  display:grid;
+  grid-template-columns:70% 30%;
+  gap:3rem;
+}
+.sidebar{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
 
-        /* Wrapper konten di dalam full width agar teks tetap di tengah */
-        .full-content-inner {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr; /* 3 Kolom untuk 3 Artikel */
-            gap: 2rem;
-        }
+/* ================= SECTION 2 (FULL WIDTH) ================= */
+.section-full{
+  width:100vw;
+  margin-left:calc(-50vw + 50%);
+  padding:5rem 0;
+  background:#000;
+  border-top:2px solid var(--primary);
+}
+.full-inner{
+  max-width:1000px;
+  margin:0 auto;
+  padding:0 2rem;
+}
 
-        /* CARD STYLE */
-        .article-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            padding: 2.5rem;
-            border-radius: 8px;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
-            height: 100%; /* Agar tinggi kartu sama */
-        }
+/* ================= SECTION 3 ================= */
+.section-grid{
+  max-width:1400px;
+  margin:5rem auto;
+  padding:0 2rem;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2rem;
+}
 
-        .article-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        h2 {
-            font-family: 'JetBrains Mono', monospace;
-            color: #fff;
-            font-size: 2rem;
-            border-left: 5px solid var(--primary);
-            padding-left: 20px;
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-        }
-
-        h3 { 
-            color: var(--primary); 
-            font-size: 1.3rem; 
-            margin-top: 1rem; 
-            margin-bottom: 1rem;
-            font-family: 'JetBrains Mono', monospace;
-            text-transform: uppercase;
-        }
-
-        /* GAMBAR */
-        .blog-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 6px;
-            margin: 1.5rem 0;
-            border: 1px solid #333;
-            transition: 0.3s;
-        }
-        .blog-img:hover { filter: brightness(1.1); border-color: var(--primary); }
-        
-        .caption { 
-            text-align: center; font-size: 0.85rem; color: #777; margin-top: -1rem; margin-bottom: 2rem; font-style: italic; 
-        }
-
-        /* SIDEBAR WIDGETS */
-        .sidebar { display: flex; flex-direction: column; gap: 2rem; }
-        
-        .widget {
-            background: #0c0c0c;
-            border: 1px solid var(--border);
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .widget-title {
-            font-family: 'JetBrains Mono', monospace;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--primary);
-            padding-bottom: 8px;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        /* UTILS */
-        ul { padding-left: 1rem; }
-        li { margin-bottom: 10px; position: relative; padding-left: 20px; }
-        li::before { content: "►"; color: var(--primary); position: absolute; left: 0; font-size: 0.8rem; top: 5px; }
-        
-        blockquote {
-            background: rgba(239, 68, 68, 0.05);
-            border-left: 4px solid var(--primary);
-            margin: 2rem 0;
-            padding: 1.5rem;
-            font-size: 1rem;
-            color: #ccc;
-            font-style: italic;
-        }
-
-        .mix-lang { color: #fca5a5; font-style: italic; }
-        .highlight { background: #330000; color: #ffcccc; padding: 2px 5px; }
-
-        /* RESPONSIVE */
-        @media (max-width: 1000px) {
-            .layout-split { grid-template-columns: 1fr; }
-            .full-content-inner { grid-template-columns: 1fr; }
-            .layout-full { width: 100%; margin-left: 0; }
-        }
-    </style>
+/* ================= RESPONSIVE ================= */
+@media(max-width:1000px){
+  .section-split,
+  .section-grid{
+    grid-template-columns:1fr;
+  }
+  .section-full{
+    width:100%;
+    margin-left:0;
+  }
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>ENTERPRISE_SECLOG</h1>
-        <p class="subtitle">Infrastructure Risk Management & Defense Strategy</p>
-    </header>
+<header>
+  <h1>ENTERPRISE_SECLOG</h1>
+  <p class="subtitle">Infrastructure Risk Management & Defense Strategy</p>
+</header>
 
-    <div class="layout-split">
-        
-        <main>
-            <article class="article-card">
-                <h2>01. Defining "Security"</h2>
-                <p>
-                    Dalam infrastruktur enterprise, definisi keamanan itu luas. Berdasarkan materi, ada banyak konteks seperti:
-                    <span class="highlight">Corporate Security, Network Security, dan System Security.</span>
-                </p>
-                <p>
-                    Tapi definisi intinya adalah: <strong>"Protection of assets against threats."</strong>. Kita harus tanya: Aset apa yang dilindungi? Dan ancaman apa yang mengintai?
-                </p>
-                
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Security Concept" class="blog-img">
-                <p class="caption">Fig 1. Melindungi aset digital dari berbagai ancaman.</p>
+<!-- ================= SECTION 1 ================= -->
+<section class="section-split">
+<main>
+  <article class="article-card">
+    <h2>01. Defining Security</h2>
+    <p>Security adalah perlindungan aset dari ancaman.</p>
+    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b" class="blog-img">
+  </article>
+</main>
 
-            </article>
+<aside class="sidebar">
+  <div class="article-card">
+    <h3>AUTHOR</h3>
+    <p><strong>Natasya</strong><br>Security Analyst Student</p>
+  </div>
+</aside>
+</section>
 
-            <article class="article-card" style="margin-top: 3rem;">
-                <h2>02. Institutional Challenges</h2>
-                <p>
-                    Di level personal, kita butuh privasi dan autentikasi. Tapi di level institusi, taruhannya lebih besar.
-                </p>
-                <p>Contoh skenario kegagalan infrastruktur:</p>
-                <ul>
-                    <li><strong>Data Breach:</strong> Data ribuan pelanggan korporasi dicuri.</li>
-                    <li><strong>Integrity Loss:</strong> Mahasiswa nge-hack sistem kampus buat ubah nilai.</li>
-                    <li><strong>Availability Loss:</strong> Website toko online mati total karena serangan DDoS.</li>
-                </ul>
-            </article>
-        </main>
+<!-- ================= SECTION 2 ================= -->
+<section class="section-full">
+<div class="full-inner">
+  <article class="article-card">
+    <h2>02. Institutional Challenges</h2>
+    <ul>
+      <li>Data Breach</li>
+      <li>Integrity Loss</li>
+      <li>Availability Loss</li>
+    </ul>
+  </article>
+</div>
+</section>
 
-        <aside class="sidebar">
-            <div class="widget">
-                <span class="widget-title">AUTHOR</span>
-                <div style="text-align: center;">
-                    <div style="width: 80px; height: 80px; background: #222; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--primary); border: 1px solid var(--primary);">N</div>
-                    <strong>NATASYA</strong>
-                    <div style="font-size: 0.8rem; color: #777;">Sec. Analyst Student</div>
-                </div>
-            </div>
+<!-- ================= SECTION 3 ================= -->
+<section class="section-grid">
+<article class="article-card">
+  <h3>03. Programming Satan’s Computer</h3>
+  <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" class="blog-img">
+  <p>Defender harus menutup semua celah.</p>
+</article>
 
-            <div class="widget">
-                <span class="widget-title">SYSTEM STATUS</span>
-                <ul style="padding: 0; list-style: none;">
-                    <li style="display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 8px;">
-                        <span>Firewall</span> <span style="color: #4ade80;">ACTIVE</span>
-                    </li>
-                    <li style="display: flex; justify-content: space-between; margin-top: 10px;">
-                        <span>Threats</span> <span style="color: yellow;">DETECTED</span>
-                    </li>
-                </ul>
-            </div>
-        </aside>
+<article class="article-card">
+  <h3>04. Basement Window Theory</h3>
+  <p>Manusia adalah celah terlemah.</p>
+</article>
 
-    </div> 
-    <div class="layout-full">
-        
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <h2 style="border: none; padding: 0; color: var(--primary); font-size: 2.5rem;">THE CORE PARADOX</h2>
-            <p style="color: #888;">Analisis Mendalam tentang Kesulitan Keamanan (Slide 6-11)</p>
-        </div>
+<article class="article-card">
+  <h3>05. The Myth of Perfection</h3>
+  <img src="https://images.unsplash.com/photo-1563986768494-4dee46a38531" class="blog-img">
+  <p>Keamanan sempurna itu mustahil.</p>
+</article>
+</section>
 
-        <div class="full-content-inner">
-            
-            <article class="article-card">
-                <h3>03. Programming Satan's Computer</h3>
-                <p>
-                    Masalah utama keamanan adalah tujuannya. Teknologi biasa memastikan "hal baik terjadi". Security memastikan <span class="mix-lang">"Bad things NEVER happen"</span>.
-                </p>
-                <p>
-                    Ross Anderson menyebut ini "Programming Satan's Computer". Lingkungannya jahat. Defender harus menutup <strong>SEMUA</strong> celah, sedangkan Attacker cuma butuh <strong>SATU</strong> celah.
-                </p>
-                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hacker Code" class="blog-img">
-            </article>
-
-            <article class="article-card">
-                <h3>04. The Basement Window Theory</h3>
-                <p>
-                    Konsep <strong>Principle of Easiest Penetration</strong> menjelaskan:
-                </p>
-                <blockquote>
-                    "If one overlooks the basement windows, it does not matter how many alarms are put on the doors."
-                </blockquote>
-                <p>
-                    Di infrastruktur IT, pintu bajanya adalah Firewall. Jendela basement-nya adalah <strong>Kelalaian Manusia</strong>. Penyerang selalu mencari jalan termudah.
-                </p>
-            </article>
-
-            <article class="article-card">
-                <h3>05. The Myth of Perfection</h3>
-                <p>
-                    Kesimpulannya: <strong>Keamanan sempurna itu mustahil</strong>.
-                </p>
-                <p>
-                    Prof. Fred Chang (NSA) menyindir cara mengamankan komputer adalah dengan mematikannya dan menguburnya di tanah.
-                </p>
-                <img src="https://images.unsplash.com/photo-1563986768494-4dee46a38531?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vault" class="blog-img">
-                <p>
-                    <em>"He who defends everything, defends nothing."</em>. Kita harus melakukan <strong>Risk Management</strong> dan menyeimbangkan keamanan dengan kenyamanan.
-                </p>
-            </article>
-
-        </div>
-    </div>
-
-    <footer style="text-align: center; padding: 4rem 1rem; border-top: 1px solid #222; color: #666; font-size: 0.9rem; background: #000;">
-        <p>ENTERPRISE SECURITY LOG &copy; 2026</p>
-        <p>Created by <strong>Natasya</strong> | Based on Security Risk Management Course</p>
-    </footer>
+<footer style="text-align:center;padding:3rem;color:#666;">
+  © 2026 — Natasya
+</footer>
 
 </body>
 </html>

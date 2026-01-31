@@ -134,9 +134,8 @@
             font-family: var(--font-tech);
         }
 
-        /* --- 5. SIDEBAR STYLING (THE KEY PART) --- */
+        /* --- 5. SIDEBAR STYLING --- */
         aside {
-            /* HAPUS STICKY AGAR IKUT SCROLL */
             display: flex;
             flex-direction: column;
             gap: 25px;
@@ -149,7 +148,6 @@
             position: relative;
             overflow: hidden;
         }
-        /* Aksen merah di atas widget */
         .widget::before {
             content: "";
             position: absolute;
@@ -192,24 +190,18 @@
             font-family: var(--font-tech);
         }
 
-        .progress-bar-container {
+        /* Threat Intel List */
+        .threat-item {
+            display: flex;
+            gap: 10px;
             margin-bottom: 15px;
+            border-bottom: 1px dashed #222;
+            padding-bottom: 10px;
         }
-        .progress-label { display: flex; justify-content: space-between; font-size: 0.8rem; color: #888; margin-bottom: 5px; }
-        .progress-bg { background: #222; height: 6px; width: 100%; border-radius: 3px; }
-        .progress-fill { background: var(--primary-red); height: 100%; border-radius: 3px; }
-
-        /* Code Snippet Box in Sidebar */
-        .code-snippet {
-            background: #000;
-            padding: 10px;
-            font-family: monospace;
-            font-size: 0.75rem;
-            color: #33ff33;
-            border-left: 3px solid var(--primary-red);
-            margin-top: 10px;
-            overflow-x: hidden;
-        }
+        .threat-item:last-child { border-bottom: none; margin-bottom: 0; }
+        .threat-icon { color: var(--primary-red); font-size: 1.2rem; min-width: 25px; }
+        .threat-text { font-size: 0.85rem; color: #ccc; line-height: 1.3; }
+        .threat-highlight { color: var(--neon-red); font-weight: bold; display: block; margin-bottom: 2px; }
 
         /* --- DIAGRAM CSS --- */
         .evo-flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
@@ -382,9 +374,14 @@
 
                 <hr style="border-color: #333; margin: 40px 0;">
                 
+                <p style="font-size: 1.1rem; color: #fff;">
+                    <strong>Kesimpulan & Prospek Masa Depan:</strong>
+                </p>
                 <p>
-                    <strong>Kesimpulan:</strong><br>
                     Membangun infrastruktur Enterprise yang aman memerlukan harmonisasi antara teknologi mutakhir, kebijakan yang ketat, dan kesadaran sumber daya manusia. Keamanan bukanlah tujuan akhir, melainkan sebuah proses yang terus berjalan seiring perkembangan ancaman digital.
+                </p>
+                <p>
+                    Di masa depan, integrasi kecerdasan buatan (AI) dalam pertahanan siber akan menjadi standar baru yang tidak terelakkan. Oleh karena itu, organisasi harus menanamkan pola pikir <em>Security First</em> pada setiap lapisan operasional, memastikan bahwa inovasi bisnis tidak terhambat oleh kerentanan sistem, melainkan diperkuat oleh arsitektur keamanan yang tangguh.
                 </p>
             </article>
         </main>
@@ -400,16 +397,12 @@
                     </div>
                     <h3 style="margin:0; color:white;">Natasya</h3>
                     <div style="font-size:0.8rem; color:var(--neon-red); margin-bottom:10px; font-family:var(--font-tech);">
-                        [ STUDENT_ID: ACCESS_GRANTED ]
+                        NIM: 030202400007
                     </div>
-                    <p style="font-size:0.85rem; color:#aaa;">
-                        Mahasiswa IT President University. Fokus pada Network Infrastructure & Cyber Security Defense.
+                    <p style="font-size:0.85rem; color:#aaa; margin-top:10px;">
+                        Mahasiswa IT President University<br>
+                        Focus: Cyber Security & Infra
                     </p>
-                    <div style="margin-top:15px; font-size:1.2rem;">
-                        <i class="fab fa-github" style="margin:0 10px; color:white;"></i>
-                        <i class="fab fa-linkedin" style="margin:0 10px; color:white;"></i>
-                        <i class="fas fa-envelope" style="margin:0 10px; color:white;"></i>
-                    </div>
                 </div>
             </div>
 
@@ -429,20 +422,79 @@
 
             <div class="widget">
                 <div class="widget-title">
-                    <span>RELEVANT SKILLS</span>
-                    <i class="fas fa-code"></i>
+                    <span>THREAT INTEL (Top 10)</span>
+                    <i class="fas fa-radiation"></i>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-label"><span>Network Config</span><span>85%</span></div>
-                    <div class="progress-bg"><div class="progress-fill" style="width:85%;"></div></div>
+                
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-clock"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">11 Detik</span>
+                        Frekuensi serangan Ransomware global.
+                    </div>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-label"><span>Risk Analysis</span><span>70%</span></div>
-                    <div class="progress-bg"><div class="progress-fill" style="width:70%;"></div></div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-eye-slash"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">280 Hari</span>
+                        Waktu rata-rata mendeteksi kebocoran data.
+                    </div>
                 </div>
-                <div class="progress-bar-container">
-                    <div class="progress-label"><span>Linux Server</span><span>80%</span></div>
-                    <div class="progress-bg"><div class="progress-fill" style="width:80%;"></div></div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-user-times"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">95% Error</span>
+                        Disebabkan oleh kesalahan manusia (Human Error).
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">$10.5 Triliun</span>
+                        Estimasi kerugian cybercrime tahun 2025.
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">3.4 Miliar</span>
+                        Email phishing dikirim setiap hari.
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-wifi"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">5 Menit</span>
+                        Waktu perangkat IoT diserang setelah online.
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-key"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">81% Breach</span>
+                        Akibat password yang lemah atau dicuri.
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-store"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">43% Target</span>
+                        Serangan cyber menargetkan bisnis kecil.
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-ghost"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">Shadow IT</span>
+                        30% pengeluaran IT tidak diketahui tim Security.
+                    </div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-robot"></i></div>
+                    <div class="threat-text">
+                        <span class="threat-highlight">Deepfake</span>
+                        Peningkatan penggunaan AI untuk penipuan sosial.
+                    </div>
                 </div>
             </div>
 
@@ -465,27 +517,6 @@
 
             <div class="widget">
                 <div class="widget-title">
-                    <span>THREAT INTEL</span>
-                    <i class="fas fa-radiation"></i>
-                </div>
-                <div style="display:flex; align-items:center; gap:15px; margin-bottom:15px;">
-                    <i class="fas fa-skull-crossbones" style="font-size:1.5rem; color:var(--primary-red);"></i>
-                    <div style="font-size:0.8rem; line-height:1.2; color:#ccc;">
-                        <strong style="color:var(--neon-red);">11 Detik</strong><br>
-                        Frekuensi serangan Ransomware terjadi pada perusahaan di tahun 2024.
-                    </div>
-                </div>
-                <div style="display:flex; align-items:center; gap:15px;">
-                    <i class="fas fa-user-clock" style="font-size:1.5rem; color:var(--primary-red);"></i>
-                    <div style="font-size:0.8rem; line-height:1.2; color:#ccc;">
-                        <strong style="color:var(--neon-red);">280 Hari</strong><br>
-                        Waktu rata-rata untuk mendeteksi kebocoran data (*Data Breach*).
-                    </div>
-                </div>
-            </div>
-
-            <div class="widget">
-                <div class="widget-title">
                     <span>CAREER PATHS</span>
                     <i class="fas fa-briefcase"></i>
                 </div>
@@ -503,37 +534,6 @@
                         <i class="fas fa-chevron-right" style="color:var(--neon-red); font-size:0.7rem;"></i> <strong>CISO</strong> (Chief Info Sec Officer)
                     </li>
                 </ul>
-            </div>
-
-            <div class="widget">
-                <div class="widget-title">
-                    <span>STANDARDS</span>
-                    <i class="fas fa-book"></i>
-                </div>
-                <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                    <div style="border:1px solid #555; padding:5px 10px; border-radius:4px; font-size:0.8rem; color:#fff;">ISO 27001</div>
-                    <div style="border:1px solid #555; padding:5px 10px; border-radius:4px; font-size:0.8rem; color:#fff;">NIST CSF</div>
-                    <div style="border:1px solid #555; padding:5px 10px; border-radius:4px; font-size:0.8rem; color:#fff;">GDPR</div>
-                    <div style="border:1px solid #555; padding:5px 10px; border-radius:4px; font-size:0.8rem; color:#fff;">PCI-DSS</div>
-                </div>
-            </div>
-
-            <div class="widget">
-                <div class="widget-title">
-                    <span>SYSTEM_LOG</span>
-                    <i class="fas fa-terminal"></i>
-                </div>
-                <div class="code-snippet">
-> INITIALIZING SECURITY...<br>
-> CHECKING FIREWALL [OK]<br>
-> SCANNING PORTS...<br>
-> PORT 80: OPEN<br>
-> PORT 443: OPEN<br>
-> PORT 22: SECURED<br>
-> ENCRYPTION: AES-256<br>
-> STATUS: PROTECTED<br>
-<span style="animation: blink 1s infinite;">_</span>
-                </div>
             </div>
 
         </aside>

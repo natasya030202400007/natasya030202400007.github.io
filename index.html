@@ -122,25 +122,13 @@
             padding-bottom: 8px;
         }
 
-        /* PENTING: Text Color diubah jadi agak terang agar mudah dibaca */
+        /* Text Color agak terang biar enak dibaca */
         p { color: #e0e0e0; margin-bottom: 25px; text-align: justify; font-size: 1.1rem; }
         strong { color: white; font-weight: 700; }
         
         ul { margin-bottom: 30px; color: #bbb; }
         li { margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px; }
         li::before { content: "►"; color: var(--primary-red); position: absolute; left: 0; font-size: 0.8rem; top: 6px; }
-
-        /* Blockquote Khusus untuk Quote slide */
-        blockquote {
-            border-left: 5px solid var(--neon-red);
-            background: #1a0505;
-            padding: 20px 30px;
-            font-style: italic;
-            color: #ff8a80;
-            margin: 30px 0;
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-        }
 
         /* Diagram Box Styling (CSS Based) */
         .diagram-box {
@@ -275,7 +263,6 @@
         .ref-list li::before { content: none; }
         .ref-icon { color: var(--neon-red); margin-right: 8px; }
 
-
         /* --- DIAGRAM CSS COMPONENTS --- */
         .evo-flex { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
         .evo-box {
@@ -315,7 +302,7 @@
 
     <header>
         <h1>Secure The Enterprise</h1>
-        <div class="subtitle">INFRASTRUCTURE ARCHITECTURE & SECURITY PROTOCOLS</div>
+        <div class="subtitle">SECURITY RISK MANAGEMENT</div>
     </header>
 
     <div class="wrapper">
@@ -324,40 +311,23 @@
             <article>
                 <p style="font-size: 1.3rem; border-bottom: 1px solid #333; padding-bottom: 25px; color:white; font-weight: 300;">
                     <strong>Executive Summary:</strong><br>
-                    Di era hyper-connectivity saat ini, Infrastruktur IT udah bukan cuma "support system" doang, tapi <strong>central nervous system</strong>-nya sebuah perusahaan. Kalau data adalah "new oil", maka kegagalan mengamankan infrastruktur sama aja kayak ngasih kunci brankas ke maling. Artikel ini bakal ngebahas anatomi infrastruktur modern, kenapa security itu susah banget (asymmetric challenge), dan strategi mitigasi risiko yang wajib dilakuin.
+                    Di era hiper-konektivitas saat ini, Infrastruktur IT bukan lagi sekadar *support system* di balik layar, tapi udah jadi <strong>central nervous system</strong> sebuah organisasi. Kalau data adalah "new oil", maka kegagalan dalam mengamankan infrastruktur sama aja kayak ngasih kunci perusahaan ke lawan. Artikel ini bakal ngebahas anatomi infrastruktur modern, gimana evolusinya, dan strategi *defense* apa yang wajib kita punya.
                 </p>
 
-                <h2><i class="fas fa-network-wired"></i> 1. Definisi: Protection of Assets</h2>
+                <h2><i class="fas fa-network-wired"></i> 1. Decoding Enterprise Infrastructure</h2>
                 <p>
-                    Basically, security itu bukan cuma soal pasang antivirus mahal di laptop. Dalam konteks organisasi, security didefinisikan sebagai <strong>"Protection of assets against threats"</strong>.
+                    Basically, <strong>Enterprise Infrastructure</strong> itu adalah integrasi kompleks antara *hardware*, *software*, dan *network* yang bikin perusahaan bisa beroperasi. Tujuannya jelas: Scalability, Reliability, dan High Availability.
                 </p>
-                <p>
-                    Kita gak cuma ngomongin Hardware, Software, dan Network, tapi gimana caranya memastikan aspek CIA Triad terpenuhi:
-                </p>
+                <p>Secara teknis, ada tiga pilar utama yang saling menopang:</p>
                 <ul>
-                    <li><strong>Confidentiality & Privacy:</strong> Data cuma boleh dilihat sama yang berhak.</li>
-                    <li><strong>Integrity:</strong> Data gak boleh diutak-atik atau corrupt secara ilegal.</li>
-                    <li><strong>Availability:</strong> Sistem harus selalu "Up" dan ready pas dibutuhin (High Availability).</li>
-                    <li><strong>Non-repudiation:</strong> User gak bisa ngeles kalau dia udah melakukan transaksi/tindakan tertentu.</li>
+                    <li><strong>Hardware Layer (The Physical):</strong> Ini barang fisiknya. Mulai dari server fisik (Blade/Rack), storage system (SAN/NAS), sampai ke *endpoints* kayak laptop user.</li>
+                    <li><strong>Software Layer (The Logic):</strong> Otaknya sistem. Ini mencakup OS Server (Windows/Linux), Database (DBMS), dan aplikasi Enterprise kayak ERP atau CRM.</li>
+                    <li><strong>Network Layer (The Connectivity):</strong> Jalan rayanya data. Terdiri dari Router, Switch, Load Balancer, dan infrastruktur kabel Fiber Optik atau Wi-Fi.</li>
                 </ul>
 
-                <h2><i class="fas fa-bug"></i> 2. The Hard Truth: Kenapa Security Itu Susah?</h2>
+                <h2><i class="fas fa-history"></i> 2. The Evolution Shift</h2>
                 <p>
-                    Jujur aja, ngamanin infrastruktur itu jauh lebih *tricky* daripada ngebangunnya. Kenapa? Karena *goal*-nya beda banget.
-                </p>
-                <p>
-                    Kalau di tech biasa, tujuannya adalah "making good things happen" (aplikasi jalan lancar). Tapi di Security, tujuannya adalah <strong>"ensuring bad things NEVER happen"</strong>. Ini bikin posisi defender jadi berat sebelah:
-                </p>
-                <blockquote>
-                    "The defender has to find and eliminate ALL exploitable vulnerabilities; the attacker only needs to find ONE." [cite: 2]
-                </blockquote>
-                <p>
-                    Kita sebagai *defender* harus nutup ribuan pintu, tapi *attacker* cuma butuh satu jendela kecil yang lupa dikunci buat masuk. Inilah yang dibilang Ross Anderson sebagai <em>"Programming Satan's Computer"</em>—kita kerja di lingkungan di mana musuh secara aktif nyari cara buat nge-bypass sistem yang udah kita bangun.
-                </p>
-
-                <h2><i class="fas fa-history"></i> 3. Evolusi Infrastruktur & Analisis Skala</h2>
-                <p>
-                    Pergeseran dari *On-Premise* ke *Cloud* bener-bener ngubah lanskap ancaman. Batas fisik kantor udah ilang. Tapi, prinsip dasarnya tetep sama: *Scale matters*.
+                    Dalam 20 tahun terakhir, terjadi pergeseran paradigma yang gila-gilaan. Transformasi ini ngubah cara kita mandang *security system*.
                 </p>
 
                 <div class="diagram-box">
@@ -365,13 +335,13 @@
                         <div class="evo-box">
                             <i class="fas fa-server evo-icon"></i>
                             <div style="font-weight:bold; color:white;">Legacy</div>
-                            <small>Perimeter Defense</small>
+                            <small>On-Premise</small>
                         </div>
                         <div style="display:flex; align-items:center; color:#555;"><i class="fas fa-arrow-right"></i></div>
                         <div class="evo-box">
                             <i class="fas fa-globe evo-icon"></i>
-                            <div style="font-weight:bold; color:white;">Hybrid Cloud</div>
-                            <small>Modern Standard</small>
+                            <div style="font-weight:bold; color:white;">Hybrid</div>
+                            <small>Mixed Env</small>
                         </div>
                         <div style="display:flex; align-items:center; color:#555;"><i class="fas fa-arrow-right"></i></div>
                         <div class="evo-box">
@@ -380,53 +350,72 @@
                             <small>Zero Trust</small>
                         </div>
                     </div>
-                    <div class="diagram-caption">Gambar 1: Evolusi Infrastruktur IT.</div>
+                    <div class="diagram-caption">Gambar 1: Transisi dari Data Center Fisik ke Cloud.</div>
                 </div>
+
+                <p>
+                    Dulu zaman <strong>On-Premise</strong>, security itu konsepnya kayak "Benteng" (*Perimeter-Based*). Asumsinya: "siapapun yang ada di dalam gedung kantor, berarti aman". Tapi sekarang di era <strong>Cloud Computing</strong>, tembok itu udah runtuh. Data nyebar di mana-mana, jadi kita butuh *approach* baru yang gak bergantung sama lokasi fisik.
+                </p>
+
+                <h2><i class="fas fa-balance-scale"></i> 3. Scale Analysis: UMKM vs Enterprise</h2>
+                <p>
+                    *Size does matter*. Ukuran organisasi nentuin banget seberapa kompleks ancaman yang bakal dateng dan strategi apa yang harus dipake.
+                </p>
 
                 <div class="comparison-grid">
                     <div class="comp-card-small">
                         <h3 style="margin-top:0; color:#fff; border-left:none; padding-left:0;">Small Business (UMKM)</h3>
+                        <p style="font-size:0.9rem;">Biasanya *resource*-nya terbatas.</p>
                         <ul>
                             <li><strong>Threats:</strong> Ransomware oportunistik & Phishing massal.</li>
-                            <li><strong>Weakness:</strong> Budget tipis, sering males update OS.</li>
-                            <li><strong>Fact:</strong> 43% cyber attack justru nargetin bisnis kecil.</li>
+                            <li><strong>Focus:</strong> Antivirus, edukasi karyawan, & Backup rutin ke Cloud.</li>
+                            <li><strong>Infra:</strong> Full SaaS (Google Workspace/O365).</li>
                         </ul>
                     </div>
                     <div class="comp-card-large">
                         <h3 style="margin-top:0; color:var(--neon-red); border-left:none; padding-left:0;">Large Enterprise</h3>
+                        <p style="font-size:0.9rem;">Korporasi gede dengan data kritis.</p>
                         <ul>
                             <li><strong>Threats:</strong> APT (Advanced Persistent Threat) & Insider Threat.</li>
-                            <li><strong>Weakness:</strong> Sistem terlalu kompleks ("Target-Rich Environment").</li>
+                            <li><strong>Focus:</strong> Tim SOC 24/7, SIEM, & Network Segmentation.</li>
+                            <li><strong>Infra:</strong> Hybrid (Campuran On-Premise & Multi-Cloud).</li>
                         </ul>
                     </div>
                 </div>
 
                 <h2><i class="fas fa-shield-alt"></i> 4. Strategy: The Security Triad</h2>
                 <p>
-                    Gimana cara ngelindungin aset di lingkungan yang "kaya target" ini? Kita harus terapin <strong>Defense in Depth</strong>. Tapi inget satu prinsip penting dari materi kuliah: <strong>"Principle of Easiest Penetration"</strong>.
-                </p>
-                <p>
-                    <em>"Intruder will use any available means."</em> Kalau pintu depan dikunci pake smart lock canggih tapi jendela basement kebuka, ya malingnya masuk lewat jendela.
+                    Buat mastiin sistem kita "Badak" (tahan banting), kita perlu terapin konsep <strong>Defense in Depth</strong> alias pertahanan berlapis di tiga domain utama:
                 </p>
 
-                <h3>A. Hardware (Physical)</h3>
+                <h3>A. Hardware Security (Fisik)</h3>
                 <p>
-                    Batasi akses fisik. Pake *TPM chips* buat integritas hardware. Inget *old military adage*: <em>"He who defends everything defends nothing."</em>  Fokusin pertahanan di aset paling kritis.
+                    Ini layer pertahanan paling dasar. Mitigasinya meliputi pembatasan akses fisik ke Ruang Server (pake biometrik), pasang CCTV, dan pastiin hardware punya modul keamanan kayak *TPM (Trusted Platform Module)* biar gak diotak-atik secara fisik.
                 </p>
 
-                <h3>B. Software (Logic)</h3>
+                <h3>B. Software Security (Logic)</h3>
                 <p>
-                    *Patch Management* is a must. Celah keamanan (*bugs*) itu pintu masuk utama. Aplikasi juga harus didesain pake prinsip *Secure Coding* dan *Least Privilege* (akses seperlunya aja).
+                    Celah di aplikasi sering jadi pintu masuk hacker. Kita butuh implementasi:
                 </p>
+                <ul>
+                    <li><strong>Patch Management:</strong> Update OS dan aplikasi secara rutin buat nutup celah keamanan (*vulnerabilities*).</li>
+                    <li><strong>Least Privilege:</strong> Kasih hak akses seminimal mungkin ke user. Jangan semua jadi Admin.</li>
+                    <li><strong>Secure Coding:</strong> Developer harus mastiin kodenya aman dari serangan klasik kayak *SQL Injection*.</li>
+                </ul>
 
-                <h3>C. Network (Transit)</h3>
+                <h3>C. Network Security (Transit)</h3>
                 <p>
-                    Pakai Enkripsi dan Segmentasi Jaringan. Jangan biarkan satu komputer kena virus, terus virusnya bisa jalan-jalan ke server database utama (*Lateral Movement*).
+                    Jalan raya data harus dijaga ketat. Teknologinya antara lain:
                 </p>
+                <ul>
+                    <li><strong>Next-Gen Firewall (NGFW):</strong> Bisa inspeksi paket data sampe dalem (*Deep Packet Inspection*).</li>
+                    <li><strong>Segmentation:</strong> Pisahin jaringan berdasarkan fungsi. Wi-Fi tamu jangan digabung sama jaringan server keuangan.</li>
+                    <li><strong>Encryption:</strong> Enkripsi data yang lagi dikirim (Data in Transit) pake protokol TLS/SSL.</li>
+                </ul>
 
                 <h2><i class="fas fa-exclamation-triangle"></i> 5. Risk Management</h2>
                 <p>
-                    Challenge terbesar di risk management adalah meyakinkan diri sendiri kalau kita udah mikirin semua skenario serangan. Padahal kata Bruce Schneier: <em>"A good attack is one that the engineers never thought of."</em> 
+                    Di dunia *cyber security*, risiko itu gak bisa diilangin 100%, tapi bisa dikelola (*manageable*). Siklusnya kayak gini:
                 </p>
 
                 <div class="diagram-box">
@@ -442,22 +431,24 @@
                     <div class="diagram-caption">Gambar 2: Siklus Manajemen Risiko.</div>
                 </div>
 
+                <p>
+                    Setiap aset harus dinilai berdasarkan dampaknya ke bisnis (*Business Impact Analysis*). Kalau risikonya tinggi, kita lakuin Mitigasi. Kalau risikonya rendah, mungkin bisa kita terima aja (*Risk Acceptance*) atau transfer ke asuransi.
+                </p>
+
                 <hr style="border-color: #333; margin: 40px 0;">
                 
                 <p style="font-size: 1.2rem; color: #fff;">
-                    <strong>Conclusion: No Such Thing as Perfect Security</strong>
+                    <strong>Conclusion & Future Outlook:</strong>
                 </p>
                 <p>
-                    Security itu seringkali bikin ribet (*Trade-off* antara keamanan vs kenyamanan). Tapi ya, di dunia ini gak ada keamanan yang sempurna. Profesor Fred Chang (eks NSA) pernah bilang kutipan legendaris:
+                    Membangun infrastruktur Enterprise yang aman butuh harmonisasi antara teknologi canggih, *policy* yang ketat, dan kesadaran manusianya. Security itu bukan tujuan akhir, tapi proses yang terus jalan (*continuous process*).
                 </p>
-                <blockquote>
-                    "Satu-satunya cara buat bener-bener ngelindungin komputer lo sekarang adalah: matiin, cabut internetnya, cor di dalem semen, terus kubur 100 kaki di bawah tanah." 
-                </blockquote>
                 <p>
-                    Karena kita gak mungkin ngelakuin itu buat bisnis, tugas kita sebagai orang IT adalah meminimalisir risiko itu sebisanya. <em>Security First, always.</em>
+                    Ke depannya, integrasi AI dalam pertahanan siber bakal jadi standar baru. Organisasi harus nanemin *mindset* <strong>Security First</strong>, mastiin kalau inovasi bisnis gak keganggu sama celah keamanan, tapi justru diperkuat sama sistem yang tangguh.
                 </p>
             </article>
         </main>
+
 
         <aside>
             <div class="widget">
@@ -466,11 +457,11 @@
                     <div class="profile-img"><i class="fas fa-user-secret"></i></div>
                     <h3 style="margin:0; color:white;">Natasya</h3>
                     <div style="font-size:0.8rem; color:var(--neon-red); margin-bottom:10px; font-family:var(--font-tech);">
-                        NIM: 030202400007
+                        STUDENT ID : 030202400007
                     </div>
                     <p style="font-size:0.9rem; color:#aaa; margin-top:10px;">
                         Mahasiswa IT President University<br>
-                        Focus: Cyber Security & Infra
+                        Subject : Security Risk Management
                     </p>
                 </div>
             </div>
@@ -478,9 +469,9 @@
             <div class="widget">
                 <div class="widget-title"><span>NAVIGATION</span><i class="fas fa-compass"></i></div>
                 <ul class="nav-list">
-                    <li><a href="#">1. Asset Protection</a></li>
-                    <li><a href="#">2. The Hard Truth</a></li>
-                    <li><a href="#">3. Evolution & Scale</a></li>
+                    <li><a href="#">1. Infra Definition</a></li>
+                    <li><a href="#">2. IT Evolution</a></li>
+                    <li><a href="#">3. Scale Analysis</a></li>
                     <li><a href="#">4. Security Triad</a></li>
                     <li><a href="#">5. Risk Mgmt</a></li>
                 </ul>
@@ -497,12 +488,16 @@
                     <div class="threat-text"><span class="threat-highlight">11 Detik</span>Frekuensi serangan Ransomware.</div>
                 </div>
                 <div class="threat-item">
-                    <div class="threat-icon"><i class="fas fa-balance-scale-right"></i></div>
-                    <div class="threat-text"><span class="threat-highlight">Asimetri</span>Defender harus 100% benar, Hacker cuma 1%.</div>
+                    <div class="threat-icon"><i class="fas fa-eye-slash"></i></div>
+                    <div class="threat-text"><span class="threat-highlight">280 Hari</span>Rata-rata deteksi kebocoran data.</div>
                 </div>
                 <div class="threat-item">
                     <div class="threat-icon"><i class="fas fa-user-times"></i></div>
                     <div class="threat-text"><span class="threat-highlight">95% Error</span>Human Error penyebab utama.</div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <div class="threat-text"><span class="threat-highlight">$10.5 T</span>Kerugian cybercrime 2025.</div>
                 </div>
                  <div class="threat-item">
                     <div class="threat-icon"><i class="fas fa-key"></i></div>
@@ -514,11 +509,19 @@
                 </div>
                 <div class="threat-item">
                     <div class="threat-icon"><i class="fas fa-door-open"></i></div>
-                    <div class="threat-text"><span class="threat-highlight">Easiest Path</span>Hacker pilih jalan termudah (jendela vs pintu).</div>
+                    <div class="threat-text"><span class="threat-highlight">Easiest Path</span>Hacker pilih jalan termudah.</div>
                 </div>
                 <div class="threat-item">
-                    <div class="threat-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <div class="threat-text"><span class="threat-highlight">$10.5 T</span>Kerugian cybercrime 2025.</div>
+                    <div class="threat-icon"><i class="fas fa-envelope-open-text"></i></div>
+                    <div class="threat-text"><span class="threat-highlight">3.4 Miliar</span>Email phishing per hari.</div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-ghost"></i></div>
+                    <div class="threat-text"><span class="threat-highlight">Shadow IT</span>Aplikasi tak terdaftar di kantor.</div>
+                </div>
+                <div class="threat-item">
+                    <div class="threat-icon"><i class="fas fa-robot"></i></div>
+                    <div class="threat-text"><span class="threat-highlight">Deepfake</span>AI untuk penipuan sosial.</div>
                 </div>
             </div>
 
@@ -533,6 +536,7 @@
                     <span class="tech-pill">Metasploit</span>
                     <span class="tech-pill">Burp Suite</span>
                     <span class="tech-pill">Kali Linux</span>
+                    <span class="tech-pill">Snort IDS</span>
                 </div>
             </div>
 
@@ -555,17 +559,17 @@
                     <li>
                         <i class="fas fa-file-powerpoint ref-icon"></i>
                         <strong>Lecture Slides:</strong><br>
-                        Security Risk Management (Week 1) 
+                        Security Risk Management (Week 1)
                     </li>
                     <li>
                         <i class="fas fa-book ref-icon"></i>
                         <strong>Ross Anderson:</strong><br>
-                        Security Engineering & "Satan's Computer" 
+                        Security Engineering
                     </li>
                     <li>
                         <i class="fas fa-user-shield ref-icon"></i>
                         <strong>Fred Chang (NSA):</strong><br>
-                        The Myth of Perfect Security 
+                        The Myth of Perfect Security
                     </li>
                     <li style="border-bottom:none;">
                         <i class="fas fa-globe ref-icon"></i>

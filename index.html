@@ -130,6 +130,18 @@
         li { margin-bottom: 12px; list-style-type: none; position: relative; padding-left: 25px; }
         li::before { content: "►"; color: var(--primary-red); position: absolute; left: 0; font-size: 0.8rem; top: 6px; }
 
+        /* Blockquote */
+        blockquote {
+            border-left: 5px solid var(--neon-red);
+            background: #1a0505;
+            padding: 20px 30px;
+            font-style: italic;
+            color: #ff8a80;
+            margin: 30px 0;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+        }
+
         /* Diagram Box Styling (CSS Based) */
         .diagram-box {
             background: #000;
@@ -311,61 +323,61 @@
             <article>
                 <p style="font-size: 1.3rem; border-bottom: 1px solid #333; padding-bottom: 25px; color:white; font-weight: 300;">
                     <strong>Executive Summary:</strong><br>
-                    Di era hiper-konektivitas saat ini, Infrastruktur IT bukan lagi sekadar *support system* di balik layar, tapi udah jadi <strong>central nervous system</strong> sebuah organisasi. Kalau data adalah "new oil", maka kegagalan dalam mengamankan infrastruktur sama aja kayak ngasih kunci perusahaan ke lawan. Artikel ini bakal ngebahas anatomi infrastruktur modern, gimana evolusinya, dan strategi *defense* apa yang wajib kita punya.
+                    Di era hiper-konektivitas saat ini, Infrastruktur IT bukan lagi sekadar support system di balik layar, tapi udah jadi <strong>central nervous system</strong> sebuah organisasi. Kalau data adalah "new oil", maka kegagalan dalam mengamankan infrastruktur sama aja kayak ngasih kunci perusahaan ke lawan. Artikel ini bakal ngebahas anatomi infrastruktur modern, gimana evolusinya, dan strategi *defense* apa yang wajib kita punya.
                 </p>
 
                 <h2><i class="fas fa-network-wired"></i> 1. Decoding Enterprise Infrastructure</h2>
                 <p>
-                    Basically, <strong>Enterprise Infrastructure</strong> itu adalah integrasi kompleks antara *hardware*, *software*, dan *network* yang bikin perusahaan bisa beroperasi. Tujuannya jelas: Scalability, Reliability, dan High Availability.
+                    Basically, <strong>Enterprise Infrastructure</strong> itu adalah integrasi kompleks antara hardware, software, dan network yang bikin perusahaan bisa beroperasi. Tujuannya jelas: Scalability, Reliability, dan High Availability.
                 </p>
                 <p>Secara teknis, ada tiga pilar utama yang saling menopang:</p>
                 <ul>
-                    <li><strong>Hardware Layer (The Physical):</strong> Ini barang fisiknya. Mulai dari server fisik (Blade/Rack), storage system (SAN/NAS), sampai ke *endpoints* kayak laptop user.</li>
-                    <li><strong>Software Layer (The Logic):</strong> Otaknya sistem. Ini mencakup OS Server (Windows/Linux), Database (DBMS), dan aplikasi Enterprise kayak ERP atau CRM.</li>
+                    <li><strong>Hardware Layer (The Physical):</strong> Ini barang fisiknya. Mulai dari server fisik (Blade/Rack), storage system (SAN/NAS), sampai ke endpoints kayak laptop user.</li>
+                    <li><strong>Software Layer (The Logic):</strong> Otaknya sistem. Ini mencakup OS Server (Windows/Linux), Database Management Systems (DBMS), dan aplikasi Enterprise kayak ERP(Enterprise Resource Planning) atau CRM.</li>
                     <li><strong>Network Layer (The Connectivity):</strong> Jalan rayanya data. Terdiri dari Router, Switch, Load Balancer, dan infrastruktur kabel Fiber Optik atau Wi-Fi.</li>
                 </ul>
 
                 <h2><i class="fas fa-history"></i> 2. The Evolution Shift</h2>
                 <p>
-                    Dalam 20 tahun terakhir, terjadi pergeseran paradigma yang gila-gilaan. Transformasi ini ngubah cara kita mandang *security system*.
+                    Telah terjadi pergeseran paradigma yang signifikan dalam dua dekade terakhir. Transformasi ini mengubah cara kita memandang keamanan sistem.
                 </p>
 
                 <div class="diagram-box">
                     <div class="evo-flex">
                         <div class="evo-box">
                             <i class="fas fa-server evo-icon"></i>
-                            <div style="font-weight:bold; color:white;">Legacy</div>
+                            <div style="font-weight:bold; color:white;">Legacy Systems</div>
                             <small>On-Premise</small>
                         </div>
                         <div style="display:flex; align-items:center; color:#555;"><i class="fas fa-arrow-right"></i></div>
                         <div class="evo-box">
                             <i class="fas fa-globe evo-icon"></i>
-                            <div style="font-weight:bold; color:white;">Hybrid</div>
-                            <small>Mixed Env</small>
+                            <div style="font-weight:bold; color:white;">Hybrid Cloud</div>
+                            <small>Modern Standard</small>
                         </div>
                         <div style="display:flex; align-items:center; color:#555;"><i class="fas fa-arrow-right"></i></div>
                         <div class="evo-box">
                             <i class="fas fa-cloud evo-icon"></i>
-                            <div style="font-weight:bold; color:white;">Cloud Native</div>
-                            <small>Zero Trust</small>
+                            <div style="font-weight:bold; color:white;">Serverless</div>
+                            <small>Future State</small>
                         </div>
                     </div>
                     <div class="diagram-caption">Gambar 1: Transisi dari Data Center Fisik ke Cloud.</div>
                 </div>
 
                 <p>
-                    Dulu zaman <strong>On-Premise</strong>, security itu konsepnya kayak "Benteng" (*Perimeter-Based*). Asumsinya: "siapapun yang ada di dalam gedung kantor, berarti aman". Tapi sekarang di era <strong>Cloud Computing</strong>, tembok itu udah runtuh. Data nyebar di mana-mana, jadi kita butuh *approach* baru yang gak bergantung sama lokasi fisik.
+                    Di masa lalu<strong>On-Premise</strong>, security itu konsepnya kayak Benteng (Perimeter-Based). Asumsinya: "siapapun yang ada di dalam gedung kantor, berarti aman". Tapi sekarang di era <strong>Cloud Computing</strong>, tembok itu udah runtuh. Data nyebar di mana-mana, jadi kita butuh approach baru yang gak bergantung sama lokasi fisik.
                 </p>
 
                 <h2><i class="fas fa-balance-scale"></i> 3. Scale Analysis: UMKM vs Enterprise</h2>
                 <p>
-                    *Size does matter*. Ukuran organisasi nentuin banget seberapa kompleks ancaman yang bakal dateng dan strategi apa yang harus dipake.
+                    Size does matter. Ukuran organisasi nentuin banget seberapa kompleks ancaman yang bakal dateng dan strategi apa yang harus dipake.
                 </p>
 
                 <div class="comparison-grid">
                     <div class="comp-card-small">
                         <h3 style="margin-top:0; color:#fff; border-left:none; padding-left:0;">Small Business (UMKM)</h3>
-                        <p style="font-size:0.9rem;">Biasanya *resource*-nya terbatas.</p>
+                        <p style="font-size:0.9rem;">.</p>
                         <ul>
                             <li><strong>Threats:</strong> Ransomware oportunistik & Phishing massal.</li>
                             <li><strong>Focus:</strong> Antivirus, edukasi karyawan, & Backup rutin ke Cloud.</li>
@@ -457,7 +469,7 @@
                     <div class="profile-img"><i class="fas fa-user-secret"></i></div>
                     <h3 style="margin:0; color:white;">Natasya</h3>
                     <div style="font-size:0.8rem; color:var(--neon-red); margin-bottom:10px; font-family:var(--font-tech);">
-                        STUDENT ID : 030202400007
+                        STUDENT ID 030202400007
                     </div>
                     <p style="font-size:0.9rem; color:#aaa; margin-top:10px;">
                         Mahasiswa IT President University<br>

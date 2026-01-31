@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Sec | Natasya's Blog</title>
+    <title>Enterprise Infrastructure Security | Natasya</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. COLOR PALETTE (Tema Lebih Cerah/Modern Navy) --- */
+        /* --- 1. THEME: BLACK & NEON RED (Cyberpunk) --- */
         :root {
-            /* Background tidak lagi hitam pekat, tapi Navy Gelap (Slate) */
-            --bg-body: #1e293b;       /* Slate 900 */
-            --bg-panel: #334155;      /* Slate 700 - Lebih terang */
-            --bg-accent: #0f172a;     /* Slate 950 - Untuk kontras */
+            --bg-body: #050505;        /* Hitam Pekat */
+            --bg-panel: #111111;       /* Abu Sangat Gelap */
+            --bg-accent: #1a1a1a;
             
-            /* Warna Aksen Merah tetap ada tapi lebih "Pop" */
-            --primary-red: #ff4757;   
-            --soft-red: #ff6b81;
+            --primary-red: #ff0033;    /* Merah Neon Garang */
+            --dark-red: #8a001c;
             
-            /* Text Colors */
-            --text-main: #f1f5f9;     /* Putih tulang */
-            --text-muted: #cbd5e1;    /* Abu-abu terang */
+            --text-main: #e0e0e0;
+            --text-muted: #888;
             
-            /* Fonts */
-            --font-code: 'JetBrains Mono', monospace; /* Font coding */
-            --font-body: 'Inter', sans-serif;         /* Font bacaan modern */
+            --font-tech: 'Space Mono', monospace; /* Font ala Hacker */
+            --font-body: 'Roboto', sans-serif;
         }
 
         * { box-sizing: border-box; }
@@ -37,228 +33,247 @@
             color: var(--text-main);
             font-family: var(--font-body);
             line-height: 1.8;
+            background-image: radial-gradient(circle at 50% 50%, #1a0000 0%, #050505 100%);
         }
 
-        /* --- 2. HEADER SECTION --- */
+        /* --- 2. HEADER: GLITCH STYLE --- */
         header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            border-bottom: 4px solid var(--primary-red);
-            padding: 60px 20px;
+            background: linear-gradient(180deg, rgba(10,0,0,1) 0%, rgba(5,5,5,0.9) 100%);
+            border-bottom: 2px solid var(--primary-red);
+            padding: 80px 20px;
             text-align: center;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Grid Background Effect */
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255, 0, 51, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 0, 51, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            z-index: -1;
         }
 
         header h1 {
-            font-family: var(--font-code);
-            font-size: 2.5rem;
+            font-family: var(--font-tech);
+            font-size: 3.5rem;
             color: white;
+            text-transform: uppercase;
+            letter-spacing: -2px;
             margin: 0;
-            letter-spacing: -1px;
+            text-shadow: 3px 3px 0px var(--primary-red);
         }
 
         header .subtitle {
             color: var(--primary-red);
-            font-family: var(--font-code);
-            font-size: 1rem;
-            margin-top: 10px;
-            background: rgba(255, 71, 87, 0.1);
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            border: 1px solid var(--primary-red);
+            font-family: var(--font-tech);
+            font-size: 1.1rem;
+            margin-top: 15px;
+            letter-spacing: 3px;
         }
 
         /* --- 3. LAYOUT GRID --- */
         .wrapper {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 7fr 3fr; /* Konten 70%, Sidebar 30% */
-            gap: 40px;
-            padding: 40px 20px;
+            grid-template-columns: 3fr 1fr; /* Kiri Lebar, Kanan Sidebar */
+            gap: 50px;
+            padding: 50px 20px;
         }
 
-        /* --- 4. MAIN CONTENT STYLES --- */
+        /* --- 4. CONTENT STYLING --- */
         article {
             background-color: var(--bg-panel);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 50px;
+            border: 1px solid #222;
+            border-left: 5px solid var(--primary-red);
+            box-shadow: 0 0 30px rgba(255, 0, 51, 0.05);
         }
 
         h2 {
-            font-family: var(--font-code);
+            font-family: var(--font-tech);
             color: var(--primary-red);
-            border-left: 5px solid var(--primary-red);
-            padding-left: 15px;
-            margin-top: 50px;
-            font-size: 1.6rem;
+            font-size: 2rem;
+            margin-top: 60px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            border-bottom: 1px dashed #333;
+            padding-bottom: 10px;
         }
-
+        
         h3 {
             color: white;
-            margin-top: 30px;
-            font-weight: 600;
+            font-size: 1.4rem;
+            margin-top: 40px;
+            border-left: 3px solid var(--primary-red);
+            padding-left: 15px;
         }
 
-        p { color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem; }
-        
-        strong { color: white; font-weight: 700; }
-        
-        /* Highlight text effect */
-        .highlight {
-            background: rgba(255, 71, 87, 0.2);
-            padding: 0 4px;
-            border-radius: 4px;
-            color: white;
-        }
+        p { color: #ccc; margin-bottom: 25px; font-size: 1.05rem; text-align: justify; }
 
-        ul, ol { padding-left: 20px; color: var(--text-muted); }
+        strong { color: white; font-weight: bold; }
+        
+        ul, ol { margin-bottom: 25px; color: #bbb; }
         li { margin-bottom: 10px; }
 
-        /* --- 5. DIAGRAMS (CSS MADE) --- */
-        /* Diagram Box Styling */
-        .diagram-box {
-            background: var(--bg-accent);
-            border: 2px dashed #475569;
-            padding: 30px;
-            border-radius: 10px;
+        /* Blockquote for Emphasis */
+        blockquote {
+            background: #150000;
+            border-left: 4px solid var(--primary-red);
             margin: 30px 0;
-            text-align: center;
+            padding: 20px;
+            font-family: var(--font-tech);
+            color: #ff8888;
+            font-style: italic;
         }
 
-        /* Diagram 1: Timeline */
-        .timeline {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        .t-card {
-            background: var(--bg-panel);
-            border: 1px solid var(--primary-red);
-            padding: 15px;
-            border-radius: 8px;
-            width: 30%;
-            min-width: 120px;
-            transition: transform 0.3s;
-        }
-        .t-card:hover { transform: translateY(-5px); }
-        .t-icon { font-size: 2rem; color: var(--primary-red); margin-bottom: 10px; }
-        .arrow { color: #64748b; font-size: 1.5rem; }
-
-        /* Diagram 2: Cycle */
-        .cycle-container {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        .cycle-step {
-            background: var(--primary-red);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 0.9rem;
+        /* --- 5. DIAGRAMS (PURE CSS) --- */
+        .diagram-container {
+            background: #000;
+            border: 1px solid #333;
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 4px;
             position: relative;
         }
-        .cycle-step::after {
-            content: "➜";
-            margin-left: 10px;
-            color: rgba(255,255,255,0.5);
+        .diagram-container::before {
+            content: "FIGURE_RENDER_MODE: ON";
+            position: absolute;
+            top: 10px; left: 10px;
+            font-family: var(--font-tech);
+            font-size: 0.7rem;
+            color: #444;
         }
-        .cycle-step:last-child::after { content: "↺"; }
 
-        /* --- 6. SIDEBAR STYLES (ENHANCED) --- */
+        /* Evolusi Diagram */
+        .evo-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+        }
+        .evo-timeline::before {
+            content: "";
+            position: absolute;
+            top: 40px; left: 0; right: 0;
+            height: 2px;
+            background: #333;
+            z-index: 0;
+        }
+        .evo-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            width: 30%;
+        }
+        .evo-icon {
+            width: 80px; height: 80px;
+            background: var(--bg-body);
+            border: 2px solid var(--primary-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+            color: var(--primary-red);
+            box-shadow: 0 0 15px rgba(255,0,51,0.3);
+        }
+        .evo-title { font-family: var(--font-tech); color: white; margin-bottom: 5px; font-weight: bold; }
+        .evo-desc { font-size: 0.85rem; color: #777; }
+
+        /* --- 6. SIDEBAR (BLACK & RED) --- */
         aside {
-            /* Sticky sidebar biar ngikut pas scroll */
-            position: sticky; 
-            top: 20px; 
-            height: fit-content; 
+            position: sticky;
+            top: 20px;
+            height: fit-content;
         }
 
         .widget {
-            background-color: var(--bg-panel);
+            background: var(--bg-panel);
+            border: 1px solid #333;
             padding: 25px;
-            border-radius: 12px;
-            margin-bottom: 25px; /* Jarak antar widget */
-            border-top: 4px solid var(--primary-red);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .widget::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 3px;
+            background: var(--primary-red);
         }
 
         .widget-title {
-            font-family: var(--font-code);
-            font-size: 1.1rem;
+            font-family: var(--font-tech);
             color: white;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #475569;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
             padding-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            border-bottom: 1px dashed #444;
+            display: flex; justify-content: space-between;
         }
 
-        /* Profile Widget Specifics */
-        .profile-header {
-            text-align: center;
+        /* Profile Styles */
+        .profile-box { text-align: center; }
+        .profile-img {
+            width: 100px; height: 100px;
+            background: #000;
+            border: 2px solid var(--primary-red);
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem; color: white;
+        }
+        .profile-role {
+            font-size: 0.8rem;
+            color: var(--primary-red);
+            font-family: var(--font-tech);
+            display: block;
             margin-bottom: 15px;
         }
-        .profile-pic {
-            width: 90px;
-            height: 90px;
-            background: var(--bg-accent);
-            border-radius: 50%;
-            margin: 0 auto 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid var(--primary-red);
-            font-size: 2.5rem;
-            color: var(--primary-red);
-        }
-
-        /* List Styling in Sidebar */
-        .sidebar-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar-list li {
-            border-bottom: 1px dashed #475569;
-            padding-bottom: 8px;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-        .sidebar-list li:last-child { border: none; }
         
-        .tag {
-            background: var(--bg-accent);
+        /* Sidebar List */
+        .side-list { list-style: none; padding: 0; margin: 0; }
+        .side-list li {
+            border-bottom: 1px solid #222;
+            padding: 10px 0;
+            font-size: 0.9rem;
+            color: #999;
+        }
+        .side-list li:last-child { border: none; }
+        .side-list li i { color: var(--primary-red); margin-right: 10px; width: 20px; text-align: center; }
+
+        .tag-red {
+            background: rgba(255,0,51,0.1);
             color: var(--primary-red);
             padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
+            font-size: 0.7rem;
+            border: 1px solid var(--primary-red);
             margin-right: 5px;
-            font-family: var(--font-code);
         }
 
         /* --- FOOTER --- */
         footer {
             text-align: center;
-            padding: 40px;
+            padding: 50px;
+            border-top: 2px solid #222;
+            color: #555;
+            font-family: var(--font-tech);
+            font-size: 0.8rem;
             margin-top: 50px;
-            border-top: 1px solid #334155;
-            color: #64748b;
         }
 
         /* Responsive */
         @media (max-width: 900px) {
             .wrapper { grid-template-columns: 1fr; }
-            .timeline { flex-direction: column; }
-            .arrow { transform: rotate(90deg); margin: 10px 0; }
+            .evo-timeline { flex-direction: column; align-items: center; }
+            .evo-timeline::before { display: none; }
+            .evo-step { width: 100%; margin-bottom: 30px; }
+            header h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -266,240 +281,273 @@
 
     <header>
         <h1>Secure The Enterprise</h1>
-        <div class="subtitle">INFRASTRUCTURE // SECURITY // RISK</div>
+        <div class="subtitle">[ SYSTEM STATUS: SECURE ]</div>
     </header>
 
     <div class="wrapper">
         
         <main>
             <article>
-                <p style="font-size: 1.2rem; color: white;">
-                    Halo! 👋 Selamat datang di blog tugasku. Hari ini kita bakal ngupas tuntas soal <strong>Enterprise Infrastructure</strong>. Gimana caranya bikin sistem perusahaan yang besar itu tetap aman, stabil, dan gak gampang dijebol hacker. <em>Let's breakdown!</em>
+                <p style="font-size: 1.2rem; color: white; border-bottom: 1px solid #222; padding-bottom: 20px;">
+                    <strong>/ROOT/WELCOME_MSG:</strong><br>
+                    Dalam era digital yang kejam ini, sebuah perusahaan bisa bangkrut dalam semalam hanya karena satu celah keamanan kecil. Blog ini akan mengupas secara mendalam tentang anatomi infrastruktur IT perusahaan, transformasi digital, dan bagaimana kita membangun benteng pertahanan siber yang kokoh.
                 </p>
 
-                <h2>1. Apa itu Enterprise Infrastructure?</h2>
+                <h2>1. Decoding Enterprise Infrastructure</h2>
                 <p>
-                    Kalau ibarat tubuh manusia, infrastruktur IT itu adalah kerangka tulangnya. Tanpa ini, bisnis gak bisa berdiri tegak. Secara teknis, ini mencakup:
+                    Mari kita mulai dari dasar. <strong>Enterprise Infrastructure</strong> (Infrastruktur Perusahaan) bukan sekadar tumpukan kabel dan komputer. Ini adalah "Sistem Saraf Pusat" dari sebuah organisasi. Jika infrastruktur mati, bisnis mati. Secara teknis, infrastruktur modern terbagi menjadi beberapa pilar utama yang saling terintegrasi:
                 </p>
                 <ul>
-                    <li><strong class="highlight">Hardware:</strong> Server fisik, data center, laptop karyawan.</li>
-                    <li><strong class="highlight">Software:</strong> OS, Aplikasi CRM, Database.</li>
-                    <li><strong class="highlight">Network:</strong> Kabel fiber, Router, Switch, dan Wi-Fi.</li>
+                    <li><strong>The Hardware Layer (Fisik):</strong> Ini adalah komponen yang bisa Anda sentuh. Mulai dari <em>Mainframe</em> legendaris, jajaran server <em>Blade</em> di Data Center, perangkat penyimpanan (Storage Area Network/SAN), hingga ribuan laptop (Endpoint) yang dipegang karyawan.</li>
+                    <li><strong>The Software Layer (Logika):</strong> Otak yang menjalankan perangkat keras. Ini mencakup Sistem Operasi (Windows Server/Linux), Middleware, Database (Oracle/SQL), hingga aplikasi bisnis kritis seperti ERP (Enterprise Resource Planning) dan CRM.</li>
+                    <li><strong>The Network Layer (Konektivitas):</strong> Jalan raya tempat data berlalu-lalang. Router, Switch, Firewalls, Load Balancers, dan kabel Fiber Optik bawah laut yang menghubungkan kantor cabang di berbagai benua.</li>
                 </ul>
+                <blockquote style="border-left-color: #fff;">
+                    "Infrastructure is the enabler. Security is the protector. Without infrastructure, you have no business. Without security, you have no future."
+                </blockquote>
+
+                <h2>2. The Great Shift: Evolution of IT & Security</h2>
                 <p>
-                    Tantangannya zaman <em>now</em> bukan cuma "yang penting nyala", tapi "yang penting AMAN". Karena data perusahaan itu aset yang lebih mahal dari emas.
+                    Cara kita membangun infrastruktur telah berubah drastis dalam 20 tahun terakhir. Perubahan ini memaksa strategi keamanan (Security Posture) untuk berevolusi atau punah.
                 </p>
 
-                <h2>2. Evolusi: From Gedung ke Awan</h2>
-                <p>
-                    Dunia IT berubah cepet banget. Dulu kita simpan server di ruangan ber-AC di kantor (On-Premise). Sekarang? Kita sewa "kamar" di komputer orang lain (Cloud).
-                </p>
-
-                <div class="diagram-box">
-                    <div class="timeline">
-                        <div class="t-card">
-                            <i class="fas fa-building t-icon"></i><br>
-                            <strong>On-Premise</strong><br>
-                            <small>Server Fisik di Kantor</small>
+                <div class="diagram-container">
+                    <div class="evo-timeline">
+                        <div class="evo-step">
+                            <div class="evo-icon"><i class="fas fa-dungeon"></i></div>
+                            <div class="evo-title">Legacy / On-Premise</div>
+                            <div class="evo-desc">
+                                Server fisik di dalam gedung sendiri. Security fokus pada <strong>Perimeter</strong> (Benteng).
+                            </div>
                         </div>
-                        <div class="arrow">➜</div>
-                        <div class="t-card">
-                            <i class="fas fa-server t-icon"></i><br>
-                            <strong>Virtualization</strong><br>
-                            <small>Satu Server, Banyak OS</small>
+                        <div class="evo-step">
+                            <div class="evo-icon"><i class="fas fa-network-wired"></i></div>
+                            <div class="evo-title">Virtualization</div>
+                            <div class="evo-desc">
+                                Era Virtual Machine (VMware). Satu server fisik bisa jalanin banyak OS. Efisiensi naik, kompleksitas naik.
+                            </div>
                         </div>
-                        <div class="arrow">➜</div>
-                        <div class="t-card">
-                            <i class="fas fa-cloud t-icon"></i><br>
-                            <strong>Cloud Native</strong><br>
-                            <small>AWS / Google Cloud</small>
+                        <div class="evo-step">
+                            <div class="evo-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                            <div class="evo-title">Cloud Native</div>
+                            <div class="evo-desc">
+                                AWS/Azure. Data ada di mana-mana. Security model berubah jadi <strong>Zero Trust</strong>.
+                            </div>
                         </div>
                     </div>
-                    <p style="margin-top:15px; font-size:0.9rem; color:#94a3b8;">Gambar 1: Pergeseran infrastruktur menuju Cloud.</p>
                 </div>
 
                 <p>
-                    Bedanya apa buat security? Dulu kita cuma perlu jaga gedung. Sekarang kita harus jaga data yang tersebar di internet. Tembok pertahanan kita (Perimeter) udah ilang.
+                    <strong>Mengapa ini penting?</strong><br>
+                    Di era <em>On-Premise</em>, kita menggunakan konsep "Moat and Castle" (Parit dan Istana). Kita percaya bahwa semua orang di dalam kantor adalah orang baik, dan semua di luar adalah jahat. Kita pasang Firewall tebal di pintu masuk.
+                </p>
+                <p>
+                    Namun di era <em>Cloud</em>, konsep itu hancur. Karyawan bekerja dari Starbucks menggunakan Wi-Fi publik, mengakses data perusahaan di server Google Cloud. "Tembok" kantor sudah tidak relevan. Inilah yang melahirkan konsep modern seperti <strong>Zero Trust Architecture</strong>: <em>"Never Trust, Always Verify."</em> Jangan pernah percaya siapapun, baik dari luar maupun dalam jaringan, verifikasi setiap permintaan akses.
                 </p>
 
-                <h2>3. Skala Bisnis: Kecil vs Raksasa</h2>
-                <p>Strategi pengamanan jelas beda tergantung dompet dan ukuran perusahaan:</p>
-                
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-                    <div style="background:var(--bg-accent); padding:20px; border-radius:8px;">
-                        <h3 style="margin-top:0; color:var(--soft-red);">🏢 UMKM (Small Biz)</h3>
-                        <p style="font-size:0.9rem;">Biasanya budget tipis & tim IT terbatas.</p>
-                        <ul style="font-size:0.9rem;">
-                            <li><strong>Ancaman:</strong> Ransomware (karena security lemah).</li>
-                            <li><strong>Solusi:</strong> Pindah ke Cloud (SaaS), aktifkan 2FA, dan edukasi karyawan biar gak asal klik link.</li>
+                <h2>3. Scale Analysis: Small Biz vs Enterprise Giants</h2>
+                <p>
+                    Banyak yang berpikir, <em>"Ah, toko saya kecil, mana ada hacker yang mau iseng?"</em>. Itu adalah pola pikir yang fatal. Mari kita bedah perbedaannya secara rinci:
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                    <div style="background: #0f0f0f; padding: 25px; border-top: 3px solid #555;">
+                        <h3 style="margin-top:0; border:none; padding:0; font-size:1.2rem;">🏢 Small Business (UMKM)</h3>
+                        <p style="font-size:0.9rem;">
+                            <strong>Karakteristik:</strong> Tim IT seringkali "One Man Show" atau outsource. Budget keamanan sangat terbatas.
+                        </p>
+                        <ul style="font-size:0.9rem; padding-left:15px;">
+                            <li><strong>Tools:</strong> Mengandalkan Antivirus gratisan atau bawaan OS. Backup data seringkali manual ke Hardisk Eksternal (yang jarang dicek).</li>
+                            <li><strong>Risiko Utama:</strong> <em>Ransomware Massal.</em> Hacker menggunakan bot otomatis untuk mencari celah gampang. Begitu kena, data dikunci, bisnis berhenti total.</li>
+                            <li><strong>Strategi Jitu:</strong> Fokus pada <em>Cloud SaaS</em> (Google Workspace/O365) karena keamanan ditangani provider, dan edukasi karyawan soal Phishing.</li>
                         </ul>
                     </div>
-                    <div style="background:var(--bg-accent); padding:20px; border-radius:8px;">
-                        <h3 style="margin-top:0; color:var(--soft-red);">🏙️ Enterprise</h3>
-                        <p style="font-size:0.9rem;">Ribuan server & data nasabah sensitif.</p>
-                        <ul style="font-size:0.9rem;">
-                            <li><strong>Ancaman:</strong> APT (Hacker profesional/mata-mata).</li>
-                            <li><strong>Solusi:</strong> Punya tim SOC 24 jam, AI Monitoring, dan segmentasi jaringan super ketat.</li>
+
+                    <div style="background: #1a0505; padding: 25px; border-top: 3px solid var(--primary-red);">
+                        <h3 style="margin-top:0; border:none; padding:0; font-size:1.2rem; color:var(--primary-red);">🏙️ Enterprise Corp</h3>
+                        <p style="font-size:0.9rem;">
+                            <strong>Karakteristik:</strong> Infrastruktur Hybrid (campuran Cloud & On-Premise). Tunduk pada regulasi ketat (ISO 27001, GDPR).
+                        </p>
+                        <ul style="font-size:0.9rem; padding-left:15px;">
+                            <li><strong>Tools:</strong> SIEM (Security Information and Event Management), EDR/XDR canggih, dan Tim SOC (Security Operations Center) yang bekerja 24/7.</li>
+                            <li><strong>Risiko Utama:</strong> <em>Advanced Persistent Threat (APT)</em> & <em>Insider Threat</em>. Serangan terarah untuk mencuri properti intelektual atau sabotase.</li>
+                            <li><strong>Strategi Jitu:</strong> Defense in Depth, Network Segmentation, dan Identity Access Management (IAM) yang granular.</li>
                         </ul>
                     </div>
                 </div>
 
-                <h2>4. The Security Triad (Cara Menjaganya)</h2>
-                <p>Untuk bikin sistem yang badak, kita harus kunci 3 pintu utama:</p>
-
-                <h3>A. Hardware Security 🖥️</h3>
-                <p>Kunci fisik itu wajib. Ruang server harus pakai akses biometrik. Matikan port USB yang gak kepakai di server biar gak ada yang iseng nyolok flashdisk bervirus.</p>
-
-                <h3>B. Software Security 💾</h3>
-                <p><em>Patch, Patch, Patch!</em> Selalu update aplikasi ke versi terbaru. Jangan kasih semua karyawan akses Admin. Terapkan prinsip <strong>Least Privilege</strong> (akses seperlunya aja).</p>
-
-                <h3>C. Network Security 🌐</h3>
-                <p>Pisahkan jaringan tamu dan karyawan. Pakai <strong>VPN</strong> kalau kerja remote. Dan pasang <strong>Next-Gen Firewall</strong> yang bisa mikir (ada AI-nya) buat nyaring trafik jahat.</p>
-
-                <h2>5. Risk Management (Manajemen Risiko)</h2>
+                <h2>4. The Defense Protocol: Hardware, Software, Network</h2>
                 <p>
-                    Keamanan 100% itu mitos. Yang bisa kita lakukan adalah meminimalisir dampak kalau terjadi apa-apa.
+                    Bagaimana cara mengamankan "binatang buas" bernama infrastruktur ini? Kita harus menerapkan pertahanan berlapis pada tiga elemen inti. Tidak boleh ada satu pun yang lemah.
                 </p>
 
-                <div class="diagram-box">
-                    <div class="cycle-container">
-                        <div class="cycle-step">IDENTIFY</div>
-                        <div class="cycle-step">ASSESS</div>
-                        <div class="cycle-step">MITIGATE</div>
-                        <div class="cycle-step">MONITOR</div>
+                <h3>A. Hardware Security: The Physical Realm</h3>
+                <p>Keamanan siber dimulai dari keamanan fisik. Jika penyerang bisa menyentuh server Anda secara fisik, tidak ada software yang bisa menyelamatkannya.</p>
+                <ul>
+                    <li><strong>Environment Hardening:</strong> Data center harus tahan bencana (api, banjir) dan memiliki suplai daya cadangan (UPS/Genset).</li>
+                    <li><strong>Tamper Protection:</strong> Menggunakan server yang memiliki chip <em>TPM (Trusted Platform Module)</em> untuk memastikan hardware belum diotak-atik sejak keluar dari pabrik (Supply Chain Security).</li>
+                    <li><strong>Air Gapping:</strong> Untuk data yang sangat-sangat rahasia (Top Secret), komputer tidak boleh tersambung ke internet sama sekali.</li>
+                </ul>
+
+                <h3>B. Software Security: The Code Realm</h3>
+                <p>Aplikasi adalah pintu masuk favorit hacker. Ingat kasus <em>Log4j</em>? Satu baris kode error bisa mengguncang dunia.</p>
+                <ul>
+                    <li><strong>DevSecOps:</strong> Mengintegrasikan keamanan sejak fase pembuatan kode (*Shift Left*). Jangan menunggu aplikasi jadi baru di-scan virusnya.</li>
+                    <li><strong>Patch Management:</strong> Ini terdengar membosankan, tapi krusial. Melakukan update OS dan aplikasi sesegera mungkin untuk menutup celah keamanan (Vulnerability Patching).</li>
+                    <li><strong>Input Validation:</strong> Memastikan aplikasi web kebal terhadap serangan klasik seperti <em>SQL Injection</em> (memanipulasi database lewat kolom input) atau <em>XSS</em>.</li>
+                </ul>
+
+                <h3>C. Network Security: The Transit Realm</h3>
+                <p>Jaringan adalah tempat data bergerak. Kita harus memastikan tidak ada "pembegal" di tengah jalan.</p>
+                <ul>
+                    <li><strong>Next-Generation Firewall (NGFW):</strong> Bukan firewall biasa. NGFW bisa melakukan <em>Deep Packet Inspection</em> untuk melihat isi paket data, bukan cuma asal dan tujuannya.</li>
+                    <li><strong>DMZ (Demilitarized Zone):</strong> Area jaringan khusus untuk server yang boleh diakses publik (seperti Web Server), terpisah dari jaringan internal database yang sensitif.</li>
+                    <li><strong>VPN & Encryption:</strong> Data yang lewat di kabel (Data in Transit) harus dienkripsi (TLS 1.3). Jadi kalaupun disadap, hacker cuma dapat sampah kode acak.</li>
+                </ul>
+
+                <h2>5. Risk Management: Controlling Chaos</h2>
+                <p>
+                    Dalam keamanan informasi, kita mengenal istilah: <strong>"There is no 100% security."</strong> Tujuan kita bukan menghilangkan risiko (mustahil), tapi mengelolanya sampai ke tingkat yang bisa diterima perusahaan (*Risk Appetite*).
+                </p>
+                
+                <p>Proses ini biasanya mengikuti standar internasional seperti <strong>NIST</strong> atau <strong>ISO 27005</strong>:</p>
+
+                <div class="diagram-container" style="text-align: center;">
+                    <div style="display: inline-block; padding: 20px; border: 2px solid #333; margin: 10px;">
+                        <i class="fas fa-search" style="color:var(--primary-red); font-size:2rem; margin-bottom:10px;"></i><br>
+                        <strong>1. IDENTIFICATION</strong><br>
+                        <small>Aset apa yang kita punya?</small>
                     </div>
-                    <p style="margin-top:15px; font-size:0.9rem; color:#94a3b8;">Gambar 2: Siklus Manajemen Risiko yang berulang.</p>
+                    <span style="font-size:2rem; vertical-align:middle; color:#333;">&#10145;</span>
+                    <div style="display: inline-block; padding: 20px; border: 2px solid #333; margin: 10px;">
+                        <i class="fas fa-balance-scale" style="color:var(--primary-red); font-size:2rem; margin-bottom:10px;"></i><br>
+                        <strong>2. ASSESSMENT</strong><br>
+                        <small>Apa dampaknya jika hilang?</small>
+                    </div>
+                    <span style="font-size:2rem; vertical-align:middle; color:#333;">&#10145;</span>
+                    <div style="display: inline-block; padding: 20px; border: 2px solid #333; margin: 10px;">
+                        <i class="fas fa-shield-alt" style="color:var(--primary-red); font-size:2rem; margin-bottom:10px;"></i><br>
+                        <strong>3. MITIGATION</strong><br>
+                        <small>Pasang kontrol keamanan</small>
+                    </div>
                 </div>
-                
+
                 <p>
-                    Contoh simpel: Kita tau laptop karyawan rawan hilang (Risk Identification). Maka kita wajibkan enkripsi hardisk (Mitigation), jadi kalau laptopnya dicuri, datanya tetep gak bisa dibaca.
+                    Contoh mitigasi risiko:
+                    <br><em>Risiko:</em> Data center kebakaran.
+                    <br><em>Mitigasi:</em> Membangun <strong>Disaster Recovery Site (DRC)</strong> di kota lain. Jika Jakarta mati lampu/bencana, data di Surabaya langsung aktif menggantikan (Failover).
                 </p>
 
-                <hr style="border: 1px solid #475569; margin: 40px 0;">
-                
-                <h3>Kesimpulan</h3>
+                <hr style="border-color: #333; margin: 50px 0;">
+
+                <h3>// CONCLUSION / END_LOG</h3>
                 <p>
-                    Enterprise Security itu bukan produk sekali beli, tapi proses terus-menerus. Kombinasi antara teknologi canggih dan manusia yang sadar keamanan. <em>Stay Safe!</em>
+                    Membangun infrastruktur enterprise yang aman adalah seni menyeimbangkan antara <strong>Keamanan</strong> (Security) dan <strong>Kenyamanan</strong> (Usability). Terlalu aman, karyawan susah kerja. Terlalu nyaman, hacker pesta pora.
+                </p>
+                <p>
+                    Sebagai profesional IT masa depan, tugas kita adalah memastikan roda bisnis tetap berputar di atas landasan infrastruktur yang kokoh dan aman. <em>Stay paranoid, stay secure.</em>
                 </p>
 
             </article>
         </main>
 
-
         <aside>
             
             <div class="widget">
-                <div class="profile-header">
-                    <div class="profile-pic">
-                        <i class="fas fa-user-astronaut"></i>
+                <div class="widget-title">AUTHOR PROFILE</div>
+                <div class="profile-box">
+                    <div class="profile-img">
+                        <i class="fas fa-user-secret"></i>
                     </div>
                     <h3 style="margin:0; color:white;">Natasya</h3>
-                    <small style="color:var(--text-muted);">IT Student @ President Univ.</small>
-                </div>
-                <p style="text-align:center; font-size:0.9rem;">
-                    Mahasiswa yang lagi <em>struggle</em> tapi <em>excited</em> belajar Cyber Security & Infrastructure.
-                </p>
-                <div style="display:flex; justify-content:center; gap:15px; margin-top:15px;">
-                    <a href="#" style="color:white;"><i class="fab fa-github fa-lg"></i></a>
-                    <a href="#" style="color:white;"><i class="fab fa-linkedin fa-lg"></i></a>
-                    <a href="#" style="color:white;"><i class="fas fa-envelope fa-lg"></i></a>
+                    <span class="profile-role">IT Student @ President Univ</span>
+                    <p style="font-size:0.85rem; color:#888; margin-top:10px;">
+                        Exploring the depths of Cyber Security & Infrastructure Architecture.
+                    </p>
+                    <div style="margin-top:15px;">
+                        <a href="#" style="color:#666; margin:0 5px;"><i class="fab fa-github"></i></a>
+                        <a href="#" style="color:#666; margin:0 5px;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color:#666; margin:0 5px;"><i class="fas fa-envelope"></i></a>
+                    </div>
                 </div>
             </div>
 
             <div class="widget">
-                <div class="widget-title">
-                    <span>📑 Navigation</span>
-                    <i class="fas fa-compass"></i>
-                </div>
-                <ul class="sidebar-list">
-                    <li><a href="#" style="color:inherit; text-decoration:none;">1. Definisi Infra</a></li>
-                    <li><a href="#" style="color:inherit; text-decoration:none;">2. Evolusi Cloud</a></li>
-                    <li><a href="#" style="color:inherit; text-decoration:none;">3. Small vs Enterprise</a></li>
-                    <li><a href="#" style="color:inherit; text-decoration:none;">4. Security Triad</a></li>
-                    <li><a href="#" style="color:inherit; text-decoration:none;">5. Risk Management</a></li>
+                <div class="widget-title">SYSTEM NAVIGATION</div>
+                <ul class="side-list">
+                    <li><i class="fas fa-chevron-right"></i> 1. Infra Definition</li>
+                    <li><i class="fas fa-chevron-right"></i> 2. The Evolution</li>
+                    <li><i class="fas fa-chevron-right"></i> 3. Scale Comparison</li>
+                    <li><i class="fas fa-chevron-right"></i> 4. Security Triad</li>
+                    <li><i class="fas fa-chevron-right"></i> 5. Risk Mgmt</li>
                 </ul>
             </div>
 
             <div class="widget">
-                <div class="widget-title">
-                    <span>⚡ Did You Know?</span>
-                    <i class="fas fa-lightbulb"></i>
-                </div>
-                <ul class="sidebar-list">
+                <div class="widget-title">ESSENTIAL TOOLKIT</div>
+                <p style="font-size:0.8rem; color:#666; margin-bottom:10px;">Tools standar industri:</p>
+                <ul class="side-list">
                     <li>
-                        <span class="tag">FACT</span>
-                        Password "123456" masih jadi password paling umum dipakai di dunia tahun 2024.
+                        <strong style="color:white;">Nmap</strong><br>
+                        Network Mapper untuk melihat port terbuka.
                     </li>
                     <li>
-                        <span class="tag">STAT</span>
-                        Rata-rata perusahaan butuh <strong>280 hari</strong> buat sadar kalau mereka udah di-hack!
+                        <strong style="color:white;">Wireshark</strong><br>
+                        Analisis paket data jaringan (Packet Sniffer).
                     </li>
                     <li>
-                        <span class="tag">COST</span>
-                        Kerugian akibat Cybercrime diprediksi tembus $10 Triliun di 2025.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="widget">
-                <div class="widget-title">
-                    <span>🛠️ Hacker's Toolkit</span>
-                    <i class="fas fa-tools"></i>
-                </div>
-                <p style="font-size:0.85rem; margin-bottom:10px;">Tools populer yang sering dibahas di kelas:</p>
-                <ul class="sidebar-list">
-                    <li>
-                        <strong style="color:var(--primary-red);">Nmap</strong><br>
-                        Buat scanning jaringan (liat port terbuka).
+                        <strong style="color:white;">Metasploit</strong><br>
+                        Framework untuk uji penetrasi (Pen-Test).
                     </li>
                     <li>
-                        <strong style="color:var(--primary-red);">Wireshark</strong><br>
-                        Buat ngintip paket data yang lewat (Sniffing).
-                    </li>
-                    <li>
-                        <strong style="color:var(--primary-red);">Metasploit</strong><br>
-                        Framework buat nyoba nembus keamanan (Penetration Testing).
+                        <strong style="color:white;">Burp Suite</strong><br>
+                        Wajib untuk keamanan aplikasi web.
                     </li>
                 </ul>
             </div>
 
             <div class="widget">
-                <div class="widget-title">
-                    <span>📚 Jargon Buster</span>
-                    <i class="fas fa-book"></i>
-                </div>
-                <ul class="sidebar-list">
+                <div class="widget-title">JARGON DICTIONARY</div>
+                <ul class="side-list">
                     <li>
-                        <strong>CIA Triad</strong><br>
-                        Bukan agen Amerika, tapi: <em>Confidentiality, Integrity, Availability.</em>
+                        <span class="tag-red">CIA</span>
+                        Confidentiality, Integrity, Availability.
                     </li>
                     <li>
-                        <strong>Phishing</strong><br>
-                        Nipu orang lewat email palsu biar nyerahin password.
+                        <span class="tag-red">SOC</span>
+                        Security Operations Center.
                     </li>
                     <li>
-                        <strong>Zero Day</strong><br>
-                        Celah keamanan baru yang belum ada obatnya (patch).
+                        <span class="tag-red">DDOS</span>
+                        Serangan membanjiri trafik server sampai down.
+                    </li>
+                    <li>
+                        <span class="tag-red">ZERO DAY</span>
+                        Celah keamanan baru yang belum ada obatnya.
                     </li>
                 </ul>
             </div>
 
-             <div class="widget">
-                <div class="widget-title">
-                    <span>🚀 Future Trends</span>
-                    <i class="fas fa-rocket"></i>
+            <div class="widget">
+                <div class="widget-title">SECURITY FACTS</div>
+                <div style="font-size:0.85rem; color:#aaa; margin-bottom:15px; border-left:2px solid #333; padding-left:10px;">
+                    <i class="fas fa-info-circle" style="color:var(--primary-red);"></i>
+                    <strong>95% Kebocoran Data</strong> disebabkan oleh kesalahan manusia (Human Error), bukan kecanggihan hacker.
                 </div>
-                <p style="font-size:0.9rem; margin-bottom:0;">
-                    <strong>AI vs AI Security:</strong><br>
-                    Hacker pakai AI buat bikin serangan otomatis, defender pakai AI buat nangkis serangan secara real-time. Perang robot dimulai! 🤖
-                </p>
+                <div style="font-size:0.85rem; color:#aaa; border-left:2px solid #333; padding-left:10px;">
+                    <i class="fas fa-clock" style="color:var(--primary-red);"></i>
+                    Hacker rata-rata bersembunyi di dalam jaringan selama <strong>200+ hari</strong> sebelum ketahuan.
+                </div>
             </div>
 
         </aside>
 
-    </div> <footer>
-        <p>&copy; 2026 Natasya - President University.<br>
-        Built with HTML, CSS & <span style="color:var(--primary-red);">Coffee</span>.</p>
+    </div>
+
+    <footer>
+        &copy; 2026 Natasya - President University.<br>
+        [ Tugas Infrastruktur & Keamanan Sistem ]<br>
+        <span style="color:#333;">System.exit(0);</span>
     </footer>
 
 </body>

@@ -3,234 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enterprise Security & Infrastructure: A Comprehensive Guide</title>
+    <title>Secure The Enterprise: Infrastructure Deep Dive</title>
     <style>
-        /* CSS untuk styling blog agar terlihat profesional */
+        /* --- CYBERPUNK / IT THEME CSS --- */
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f9f9f9;
-            --text-color: #333;
+            --bg-dark: #0a0a0a;       /* Latar belakang hitam pekat */
+            --bg-card: #141414;       /* Latar belakang kontainer */
+            --text-primary: #e0e0e0;  /* Teks utama abu-abu terang */
+            --text-secondary: #a0a0a0; /* Teks sekunder */
+            --accent-red: #ff1744;    /* Merah neon menyala untuk highlight */
+            --border-red: #d50000;    /* Merah lebih gelap untuk border */
+            --font-tech: 'Courier New', Courier, monospace; /* Font monospaced ala terminal */
+            --font-body: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.8;
-            color: var(--text-color);
-            background-color: var(--bg-color);
             margin: 0;
             padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
         }
+
+        /* Header dengan efek glitch/terminal */
         header {
-            background: var(--primary-color);
-            color: white;
-            padding: 40px 20px;
+            background: linear-gradient(45deg, #000000, #2b0000);
+            padding: 60px 20px;
             text-align: center;
+            border-bottom: 3px solid var(--accent-red);
+            box-shadow: 0 0 20px rgba(255, 23, 68, 0.3);
         }
+
         header h1 {
-            margin: 0;
-            font-size: 2.5rem;
+            font-family: var(--font-tech);
+            color: var(--accent-red);
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px #570000;
         }
+
         header p {
-            font-size: 1.1rem;
-            opacity: 0.8;
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
+
+        /* Main Container */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 40px auto;
-            background: white;
-            padding: 40px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 0 20px;
+        }
+
+        /* Author Profile Section */
+        .author-profile {
+            display: flex;
+            align-items: center;
+            background-color: var(--bg-card);
+            border: 2px solid var(--border-red);
+            padding: 25px;
             border-radius: 8px;
+            margin-bottom: 50px;
+            box-shadow: 5px 5px 0px rgba(213, 0, 0, 0.5);
         }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            background-color: #333;
+            border-radius: 50%;
+            border: 3px solid var(--accent-red);
+            margin-right: 25px;
+            /* Placeholder untuk foto */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            color: var(--accent-red);
+            font-family: var(--font-tech);
+        }
+
+        .author-info h3 {
+            margin: 0 0 5px 0;
+            color: var(--accent-red);
+            font-family: var(--font-tech);
+            font-size: 1.4rem;
+        }
+
+        .author-info p {
+            margin: 0;
+            color: var(--text-secondary);
+        }
+        .author-role {
+            font-weight: bold;
+            color: white;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Content Styling */
         h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px;
-            margin-top: 40px;
+            color: var(--accent-red);
+            font-family: var(--font-tech);
+            border-left: 5px solid var(--accent-red);
+            padding-left: 15px;
+            margin-top: 50px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
         }
+
         h3 {
-            color: #555;
-            margin-top: 25px;
+            color: white;
+            margin-top: 30px;
         }
+
         p {
             margin-bottom: 20px;
         }
-        .image-placeholder {
-            background-color: #eee;
-            border: 2px dashed #aaa;
-            color: #555;
-            padding: 40px;
-            text-align: center;
-            margin: 30px 0;
-            border-radius: 8px;
-            font-style: italic;
+
+        strong.highlight {
+            color: var(--accent-red);
         }
+
+        /* List & Bullet Points */
+        ul, ol {
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+        li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        ul li::before {
+            content: ">>"; /* Mengganti bullet point dengan simbol ala terminal */
+            color: var(--accent-red);
+            font-family: var(--font-tech);
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        ul {
+            list-style-type: none; /* Hapus bullet default */
+        }
+
+        /* Image Placeholder Box - IT Style */
+        .diagram-box {
+            background-color: #0f0f0f;
+            border: 2px dashed var(--accent-red);
+            color: var(--accent-red);
+            padding: 50px 20px;
+            text-align: center;
+            margin: 40px 0;
+            border-radius: 4px;
+            font-family: var(--font-tech);
+            position: relative;
+            overflow: hidden;
+        }
+        .diagram-box::after {
+            content: "SCANNING DIAGRAM...";
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
         .image-caption {
             text-align: center;
             font-size: 0.9rem;
-            color: #666;
-            margin-top: -20px;
-            margin-bottom: 30px;
+            color: var(--text-secondary);
+            margin-top: -30px;
+            margin-bottom: 40px;
+            font-style: italic;
         }
-        ul {
-            margin-bottom: 20px;
+
+        /* Tech Box for comparisons */
+        .tech-card {
+            background: var(--bg-card);
+            border: 1px solid #333;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 4px solid var(--accent-red);
+            transition: transform 0.3s ease;
         }
-        li {
-            margin-bottom: 10px;
+        .tech-card:hover {
+            transform: translateX(5px);
+            box-shadow: -5px 0 15px rgba(255, 23, 68, 0.2);
         }
-        .highlight-box {
-            background-color: #e8f4fd;
-            border-left: 5px solid var(--accent-color);
-            padding: 15px 20px;
-            margin: 20px 0;
+        .tech-card h3 {
+            margin-top: 0;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
         }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 20px;
-            background: var(--primary-color);
-            color: white;
-            margin-top: 50px;
+            padding: 40px;
+            background: #000;
+            color: var(--text-secondary);
+            margin-top: 80px;
+            border-top: 2px solid var(--border-red);
+            font-family: var(--font-tech);
             font-size: 0.9rem;
         }
-        code {
-            background: #f4f4f4;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-family: monospace;
-        }
-        /* Responsive design */
-        @media (max-width: 600px) {
-            .container {
-                padding: 20px;
-                margin: 20px;
-            }
-            header h1 {
-                font-size: 1.8rem;
-            }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .author-profile { flex-direction: column; text-align: center; }
+            .author-avatar { margin-right: 0; margin-bottom: 20px; }
+            .container { padding: 0 15px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Enterprise & Infrastructure Security</h1>
-        <p>Strategi Mengamankan Infrastruktur IT Modern dalam Skala Bisnis</p>
+        <h1>Enterprise Infrastructure Protocol</h1>
+        <p>Decoding IT Architecture, Security Measures, and Risk Management in the Modern Business Era.</p>
     </header>
 
     <div class="container">
-        <p style="color: #777; font-size: 0.9rem;">
-            Ditulis oleh: <strong>[Nama Anda/NIM]</strong> | Kategori: <strong>Cyber Security & Infrastructure</strong>
-        </p>
-        <hr>
 
-        <h2>Pengantar: Apa itu Enterprise Infrastructure?</h2>
-        <p>
-            Dalam dunia teknologi informasi, <strong>Enterprise Infrastructure</strong> merujuk pada kumpulan sumber daya perangkat keras (hardware), perangkat lunak (software), jaringan (network), dan fasilitas pusat data yang digunakan oleh perusahaan untuk mengoperasikan, mengelola, dan mendukung layanan bisnis mereka.
-        </p>
-        <p>
-            Tantangan terbesar saat ini bukan hanya membangun infrastruktur yang cepat, tetapi bagaimana membuatnya <strong>aman (secure)</strong> dari ancaman siber yang terus berkembang.
-        </p>
+        <section class="author-profile">
+            <div class="author-avatar">N</div>
+            <div class="author-info">
+                <h3>Natasya</h3>
+                <span class="author-role">Mahasiswa IT President University</span>
+                <p>Tech enthusiast exploring the intersection of complex infrastructure and cybersecurity. Documenting my learning journey one line of code at a time.</p>
+            </div>
+        </section>
+        
+        <hr style="border-color: #333; margin-bottom: 50px;">
 
-        <h2>1. Evolusi Infrastruktur IT</h2>
-        <p>
-            Infrastruktur IT telah mengalami transformasi drastis. Dahulu, perusahaan bergantung pada <em>Mainframe</em> besar yang terpusat. Kemudian bergeser ke era <em>Client-Server</em>, dan kini kita berada di era <em>Cloud Computing</em> dan <em>Hybrid Infrastructure</em>.
-        </p>
+        <section>
+            <h2>// INITIALIZE: Understanding The Core</h2>
+            <p>
+                Welcome to the digital backbone of modern business. Kalau kita ngomongin soal <strong>Enterprise Infrastructure</strong>, kita gak cuma ngomongin sekumpulan komputer di ruang ber-AC dingin. <em>It's way bigger than that.</em>
+            </p>
+            <p>
+                Bayangin infrastruktur IT itu kayak sistem saraf dan kerangka tubuh manusia, tapi buat perusahaan. Ini adalah kombinasi kompleks dari <em>hardware</em> (server fisik, storage), <em>software</em> (aplikasi bisnis, OS), <em>network resources</em> (router, switch, kabel fiber), dan fasilitas data center yang bikin sebuah perusahaan bisa "hidup" dan beroperasi. Tanpa infrastruktur yang solid, bisnis lumpuh.
+            </p>
+            <p>
+                Tapi, punya infrastruktur canggih aja gak cukup. Tantangan terbesarnya di era digital ini adalah: <em>How to make it SECURE?</em> Gimana caranya memastikan data perusahaan yang bernilai jutaan dolar gak bocor ke tangan <em>hackers</em>? Di blog post ini, kita bakal bedah tuntas strateginya.
+            </p>
+        </section>
 
-        <div class="image-placeholder">
-            
-            <br><br>
-            <strong>Diagram 1: Evolusi Infrastruktur IT</strong><br>
-            (Visualisasi perpindahan dari On-Premise Traditional Data Center menuju Cloud Infrastructure)
-        </div>
-        <p class="image-caption">Gambar 1: Transformasi Infrastruktur IT dari masa ke masa.</p>
+        <section>
+            <h2>1. The Evolution Shift: From Fortress to Cloud</h2>
+            <p>
+                Dunia IT itu gak statis, perkembangannya cepet banget. Cara kita membangun infrastruktur 10 tahun lalu udah beda jauh sama sekarang.
+            </p>
+            <p>
+                <strong>The Old Days (On-Premise):</strong> Dulu, konsep keamanannya itu kayak "Benteng Kerajaan". Perusahaan punya server fisik sendiri yang ditaruh di kantor mereka (data center lokal). Keamanannya fokus di <em>Perimeter Security</em>. Pokoknya, bangun tembok api (Firewall) yang tebal di sekeliling kantor, pasti aman. Data ada di dalam gedung, dijaga satpam fisik dan digital.
+            </p>
+            <p>
+                <strong>The Modern Era (Cloud & Hybrid):</strong> Sekarang? <em>The perimeter has dissolved.</em> Temboknya udah gak ada. Kita pindah ke era Cloud Computing (AWS, Azure, Google Cloud). Data kita nyebar di server milik provider di berbagai negara. Karyawan bisa kerja dari kafe (WFA) pakai laptop pribadi.
+            </p>
+            <p>
+                Dampaknya ke security? Masif banget. Kita gak bisa lagi cuma ngandelin "tembok benteng". Kita harus mengamankan data <em>di mana pun</em> data itu berada. Ini menuntut pendekatan yang lebih dinamis seperti <em>Zero Trust Security</em> (jangan percaya siapapun, verifikasi semuanya).
+            </p>
 
-        <p>
-            Perubahan ini berdampak besar pada keamanan. Jika dulu kita hanya perlu menjaga "tembok" fisik server (Perimeter Security), sekarang dengan Cloud, batas jaringan menjadi kabur. Keamanan harus diterapkan di mana saja data berada.
-        </p>
+            <div class="diagram-box">
+                [INSERT DIAGRAM 1 HERE]<br>
+                Visualisasi Evolusi: Gambar Kiri (Gedung fisik dengan tembok tebal/On-Premise) --> Panah Transisi --> Gambar Kanan (Awan/Cloud dengan data tersebar dan user terhubung dari berbagai device).
+            </div>
+            <p class="image-caption">Figure 1: Visualizing the infrastructure shift from centralized On-Premise to decentralized Cloud environments.</p>
+        </section>
 
-        <h2>2. Dampak Skala Bisnis pada Strategi Keamanan</h2>
-        <p>
-            Ukuran perusahaan sangat menentukan pendekatan keamanan yang diambil. Berikut adalah perbandingan mendasar antara bisnis kecil (Small Business) dan perusahaan besar (Enterprise):
-        </p>
+        <section>
+            <h2>2. Scale Matters: Small Biz vs. Enterprise Giants</h2>
+            <p>
+                Apakah toko online rumahan butuh keamanan setingkat bank internasional? <em>Well, yes and no.</em> Prinsip dasarnya sama, tapi implementasi dan kompleksitasnya beda jauh. Skala bisnis sangat menentukan strategi security yang dipakai.
+            </p>
 
-        <div class="highlight-box">
-            <h3>🏢 Skala Kecil (Small Business/UMKM)</h3>
+            <div class="tech-card">
+                <h3>A. Small to Medium Business (SMB) / UMKM</h3>
+                <p>Bisnis skala kecil biasanya punya budget IT yang terbatas dan mungkin gak punya tim security khusus.</p>
+                <ul>
+                    <li><strong>The Reality:</strong> Seringkali pakai infrastruktur yang simpel, mungkin cuma beberapa laptop dan langganan SaaS (Software as a Service) kayak Google Workspace atau Microsoft 365.</li>
+                    <li><strong>The Threat:</strong> Jangan salah, UMKM justru sering jadi target empuk <em>ransomware</em> karena hackers tau pertahanan mereka lemah.</li>
+                    <li><strong>Security Focus:</strong> Fokus pada hal-hal fundamental yang *cost-effective*. Wajib pakai antivirus/EDR di semua device, aktifkan 2FA (Two-Factor Authentication) di semua akun, edukasi karyawan soal *phishing*, dan backup data rutin ke cloud storage yang terpisah.</li>
+                </ul>
+            </div>
+
+            <div class="tech-card">
+                <h3>B. Large Enterprise Corporation</h3>
+                <p>Ini level yang berbeda. Kita bicara ribuan karyawan, ribuan server (fisik maupun virtual), dan data yang sangat sensitif.</p>
+                <ul>
+                    <li><strong>The Reality:</strong> Infrastruktur sangat kompleks, biasanya *Hybrid* (campuran on-premise dan multiple cloud). Punya tim SOC (*Security Operations Center*) yang monitor 24/7.</li>
+                    <li><strong>The Threat:</strong> Ancamannya lebih canggih, seperti APT (*Advanced Persistent Threats*)—hacker yang disponsori negara atau grup kriminal besar yang nyusup diam-diam selama berbulan-bulan. Targetnya adalah spionase industri atau pencurian data masif.</li>
+                    <li><strong>Security Focus:</strong> *Defense in Depth* (pertahanan berlapis). Menggunakan AI untuk deteksi anomali, segmentasi jaringan yang ketat (memisahkan departemen HR dari Finance, misalnya), dan manajemen kepatuhan regulasi (compliance) yang ketat.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>3. The Defense Protocol: Securing the Triad</h2>
+            <p>
+                Gimana cara menjaga infrastruktur yang kompleks ini? Kita gak bisa cuma pasang satu gembok. Kita harus menerapkan konsep <strong>Defense in Depth</strong>—lapis demi lapis pertahanan—di tiga aspek utama infrastruktur: Hardware, Software, dan Network.
+            </p>
+
+            <h3>// LAYER 1: HARDWARE SECURITY (The Physical Realm)</h3>
+            <p>
+                Ini adalah lapisan paling dasar. Kalau penyerang bisa menyentuh server fisik kamu, secara teknis game over. Keamanan hardware itu krusial.
+            </p>
             <ul>
-                <li><strong>Karakteristik:</strong> Anggaran terbatas, tim IT kecil (atau tidak ada), infrastruktur sederhana.</li>
-                <li><strong>Tantangan Keamanan:</strong> Sering menjadi target <em>ransomware</em> karena sistem pertahanan yang lemah.</li>
-                <li><strong>Fokus Keamanan:</strong> Antivirus dasar, Firewall standar, edukasi karyawan, dan backup data rutin ke cloud.</li>
+                <li><strong>Physical Access Control:</strong> Ruang server atau data center itu area sakral. Gak boleh sembarang orang masuk. Harus pakai biometrik (sidik jari/retina scan), kartu akses berlapis, dan CCTV 24 jam.</li>
+                <li><strong>Supply Chain Attack Mitigation:</strong> Pernah denger cerita ada chip mata-mata kecil yang ditanam di motherboard server dari pabriknya? Itu nyata. Enterprise harus memastikan mereka beli hardware dari vendor terpercaya dan melakukan verifikasi integritas perangkat saat diterima.</li>
+                <li><strong>Port Security:</strong> Secara fisik menutup atau menonaktifkan port USB/Ethernet di server yang tidak terpakai biar gak ada yang iseng nyolok flashdisk berisi malware.</li>
             </ul>
-        </div>
 
-        <div class="highlight-box">
-            <h3>🏙️ Skala Besar (Enterprise)</h3>
+            <h3>// LAYER 2: SOFTWARE SECURITY (The Logic Realm)</h3>
+            <p>
+                <em>Software is eating the world</em>, tapi software juga penuh dengan *bugs* (celah keamanan). Aplikasi sering jadi pintu masuk utama peretas.
+            </p>
             <ul>
-                <li><strong>Karakteristik:</strong> Infrastruktur kompleks (ribuan server/perangkat), tim SOC (Security Operations Center) khusus, regulasi ketat.</li>
-                <li><strong>Tantangan Keamanan:</strong> <em>Advanced Persistent Threats (APT)</em>, insider threats, dan manajemen kepatuhan (compliance).</li>
-                <li><strong>Fokus Keamanan:</strong> Segmentasi jaringan, <em>Zero Trust Architecture</em>, AI-driven monitoring, dan enkripsi end-to-end.</li>
+                <li><strong>Patch Management (Vaksinasi Sistem):</strong> Ini paling dasar tapi sering diabaikan. OS (Windows/Linux) dan aplikasi harus selalu di-update. Update itu isinya "tambalan" buat nutup celah keamanan yang baru ditemuin. Telat update = membuka pintu buat hacker.</li>
+                <li><strong>Principle of Least Privilege (PoLP):</strong> Jangan kasih akses "Dewa" (Administrator/Root) ke semua orang. Karyawan cuma boleh punya hak akses minimal yang mereka butuhkan buat kerja. Kalau akun staff biasa kejebol, hacker gak bisa langsung nguasain satu sistem.</li>
+                <li><strong>Secure Coding Practices:</strong> Buat tim developer, nulis kode gak cuma harus jalan, tapi harus aman. Mencegah celah umum kayak *SQL Injection* atau *XSS* sejak fase pembuatan aplikasi.</li>
             </ul>
-        </div>
 
-        <h2>3. Bagaimana Cara Menjaganya? (The Security Triad)</h2>
-        <p>Untuk menciptakan lingkungan yang aman, kita harus menerapkan konsep <em>Defense in Depth</em> pada tiga lapisan utama:</p>
+            <h3>// LAYER 3: NETWORK SECURITY (The Transit Realm)</h3>
+            <p>
+                Jaringan adalah jalan raya tempat data lalu-lalang. Kita harus memastikan jalan raya ini aman dari pembajakan.
+            </p>
+            <ul>
+                <li><strong>Next-Gen Firewall (NGFW) & IPS:</strong> Bukan cuma firewall biasa, tapi yang pintar. Dia bisa inspeksi paket data sampai dalam (Deep Packet Inspection) dan otomatis ngeblok serangan yang polanya udah dikenali (Intrusion Prevention System).</li>
+                <li><strong>Network Segmentation:</strong> Jangan taruh semua telur dalam satu keranjang. Pisahkan jaringan berdasarkan fungsi. Jaringan Wi-Fi tamu GAK BOLEH nyambung ke jaringan server database. Kalau satu segmen kena infeksi, segmen lain tetap aman.</li>
+                <li><strong>VPN & Encryption (The Secure Tunnel):</strong> Saat data "jalan-jalan" di internet publik (misalnya karyawan WFH connect ke kantor), data itu harus dibungkus dalam terowongan terenkripsi (VPN). Jadi kalaupun ada yang nyadap di tengah jalan, mereka cuma liat kode acak yang gak bisa dibaca.</li>
+            </ul>
+        </section>
 
-        <h3>A. Hardware Security 🖥️</h3>
-        <p>Keamanan fisik adalah lapisan pertama. Jika penyerang bisa menyentuh server Anda, maka game over.</p>
-        <ul>
-            <li><strong>Physical Access Control:</strong> Gunakan biometrik atau kartu akses untuk masuk ke ruang server.</li>
-            <li><strong>Hardware Hardening:</strong> Matikan port USB yang tidak digunakan.</li>
-            <li><strong>Supply Chain Security:</strong> Pastikan membeli perangkat keras dari vendor terpercaya untuk menghindari chip mata-mata.</li>
-        </ul>
+        <section>
+            <h2>4. Managing The Chaos: Risk Management Cycle</h2>
+            <p>
+                <em>Let's be real.</em> Keamanan 100% itu ilusi. Risiko akan selalu ada. Tujuan kita bukan menghilangkan risiko, tapi mengelolanya (*manage risk*) sampai ke level yang bisa diterima perusahaan.
+            </p>
+            <p>
+                Manajemen risiko IT bukanlah tugas sekali jalan, tapi sebuah siklus yang terus berputar (*continuous loop*).
+            </p>
 
-        <h3>B. Software Security 💾</h3>
-        <p>Aplikasi seringkali menjadi pintu masuk utama bagi peretas melalui celah kerentanan (bugs).</p>
-        <ul>
-            <li><strong>Patch Management:</strong> Selalu update OS dan aplikasi ke versi terbaru.</li>
-            <li><strong>Least Privilege:</strong> Berikan hak akses seminimal mungkin kepada pengguna.</li>
-            <li><strong>Input Validation:</strong> Mencegah serangan seperti SQL Injection pada aplikasi web.</li>
-        </ul>
+            <div class="diagram-box">
+                [INSERT DIAGRAM 2 HERE]<br>
+                Visualisasi Siklus: Gambar Diagram Lingkaran dengan 4 tahap panah berputar: 1. Identify Assets & Threats -> 2. Assess & Analyze Risk -> 3. Mitigate/Control -> 4. Monitor & Review -> (Balik lagi ke 1).
+            </div>
+            <p class="image-caption">Figure 2: The continuous IT Risk Management Lifecycle.</p>
 
-        <h3>C. Network Security 🌐</h3>
-        <p>Jaringan adalah jalan raya data. Kita harus memastikan tidak ada pembajakan di tengah jalan.</p>
-        <ul>
-            <li><strong>Firewall & IPS:</strong> Menyaring trafik jahat sebelum masuk ke sistem.</li>
-            <li><strong>Segmentasi Jaringan:</strong> Memisahkan jaringan tamu, karyawan, dan server kritis (VLAN).</li>
-            <li><strong>VPN (Virtual Private Network):</strong> Mengenkripsi koneksi, terutama untuk pekerja remote.</li>
-        </ul>
+            <p>Proses ini bisa dijabarkan dalam langkah taktis:</p>
+            <ol>
+                <li><strong>Identify (Identifikasi):</strong> Apa aset paling berharga kita? Data nasabah? Resep rahasia produk? Di mana nyimpennya? Siapa yang mungkin mau nyuri (kompetitor, hacker iseng, dll)?</li>
+                <li><strong>Assess (Penilaian):</strong> Kalau aset itu dicuri, seberapa besar dampaknya? Berapa kerugian finansial dan reputasinya? Seberapa besar kemungkinan (likelihood) itu terjadi? Dari sini kita tau mana risiko prioritas tinggi.</li>
+                <li><strong>Mitigate (Mitigasi):</strong> Terapkan kontrol keamanan (yang kita bahas di bab 3 tadi) untuk mengurangi risiko prioritas tinggi. Misalnya, risiko server jebol dikurangi dengan pasang Firewall canggih.</li>
+                <li><strong>Transfer or Accept:</strong> Untuk risiko yang gak bisa dimitigasi penuh, kita bisa transfer (misalnya beli asuransi cyber) atau terima risikonya (karena biaya pengamanannya lebih mahal dari nilai asetnya).</li>
+            </ol>
+        </section>
 
-        <h2>4. Manajemen Risiko (Risk Management)</h2>
-        <p>
-            Kita tidak bisa menghilangkan risiko 100%, tapi kita bisa mengelolanya. Manajemen risiko adalah proses mengidentifikasi, mengevaluasi, dan memprioritaskan risiko.
-        </p>
+        <hr style="border-color: var(--accent-red); margin: 50px 0;">
 
-        <div class="image-placeholder">
-           
+        <section>
+            <h3>// SYSTEM TERMINATED: Conclusion</h3>
+            <p>
+                Membangun infrastruktur enterprise yang <em>secure</em> adalah perjalanan panjang, bukan tujuan akhir. Ini adalah kombinasi dari teknologi yang tepat, kebijakan yang ketat, dan yang paling penting: kesadaran manusia di dalamnya.
+            </p>
+            <p>
+                Sebagai mahasiswa IT dan calon profesional masa depan, memahami fondasi ini sangat krusial. Karena di dunia yang hyper-connected ini, <em>security is everyone's responsibility.</em> Stay paranoid, stay secure!
+            </p>
+        </section>
 
-[Image of IT risk management cycle diagram]
-
-            <br><br>
-            <strong>Diagram 2: Siklus Manajemen Risiko</strong><br>
-            (Identifikasi -> Penilaian -> Mitigasi -> Monitoring)
-        </div>
-        <p class="image-caption">Gambar 2: Siklus Manajemen Risiko dalam Keamanan Informasi.</p>
-
-        <p>Langkah-langkah taktis dalam memanajemen risiko meliputi:</p>
-        <ol>
-            <li><strong>Identifikasi Aset:</strong> Apa data paling berharga yang kita miliki?</li>
-            <li><strong>Analisis Ancaman:</strong> Siapa yang menginginkan data tersebut? (Hacker, kompetitor, dll).</li>
-            <li><strong>Mitigasi:</strong> Terapkan kontrol (misalnya: enkripsi, backup).</li>
-            <li><strong>Transfer Risiko:</strong> Menggunakan asuransi siber jika diperlukan.</li>
-        </ol>
-
-        <h2>Kesimpulan</h2>
-        <p>
-            Membangun infrastruktur enterprise yang aman bukan sekadar membeli alat mahal. Ini adalah kombinasi dari kebijakan yang tepat, teknologi yang mutakhir, dan kesadaran manusia. Baik skala kecil maupun besar, prinsip <em>Confidentiality, Integrity,</em> dan <em>Availability</em> (CIA Triad) harus tetap menjadi fondasi utama.
-        </p>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Tugas Kuliah Infrastruktur & Keamanan. Created for Educational Purpose.</p>
+    </div> <footer>
+        <p>[LOG_END] &copy; 2026 Natasya - President University IT Student. <br>Made for Educational Purpose | Theme: Cyberpunk Red</p>
     </footer>
 
 </body>
